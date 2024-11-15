@@ -109,7 +109,7 @@ class Test:
                     draw_tool.rectangle([x0, y0, x0 + 1, y0 + 1], fill = (255, 174, 201))
 
     def collision_check(self, user):
-        collision = self.overlap(self.position, user.position)
+        collision = self.overlap(self.position, user.center)
             
         if collision:
             user.state = 'die'
@@ -123,6 +123,6 @@ class Test:
             True : if overlap
             False : if not overlap
         '''
-        if ego_position[0] + 36 < other_position[0] or ego_position[0] > other_position[0] + 24 or ego_position[1] + 36 < other_position[1] or ego_position[1] > other_position[1] + 24:
+        if ego_position[0] + 36 < other_position[0] or ego_position[0] > other_position[0] or ego_position[1] + 36 < other_position[1] or ego_position[1] > other_position[1]:
             return False  # 겹치지 않음
         return True  # 겹침

@@ -97,11 +97,12 @@ def main():
         for g in grass:
             g.draw(my_draw)
 
+
+        if my_character.state != 'die':    
+            my_character.draw(my_draw)
         test.draw(my_draw)
         for assignmentArrow in assignmentArrows:
             my_draw.rectangle((assignmentArrow.position[0], assignmentArrow.position[1], assignmentArrow.position[0] + 6, assignmentArrow.position[1] + 6), fill = (0, 0, 255))
-        if my_character.state != 'die':    
-            my_character.draw(my_draw)
 
         joystick.disp.image(my_image)
     
