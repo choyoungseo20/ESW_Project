@@ -4,8 +4,8 @@ class Character:
     def __init__(self, width, height):
         self.appearance = 'retro'
         self.state = None
-        self.position = np.array([width//2 - 18, height//2 - 18])
-        self.center = np.array([self.position[0] + 16, self.position[1] + 16])
+        self.position = np.array([width//2 - 12, height//2 - 12])
+        self.center = np.array([self.position[0] + 12, self.position[1] + 12])
         self.pixel_map = [
             ".........ddddddddd......",
             "........dgggggggggd.....",
@@ -47,10 +47,10 @@ class Character:
                     self.position[1] = 0
 
             if command['down_pressed']:
-                if self.position[1] + 10 < 200:
+                if self.position[1] + 10 < 216:
                     self.position[1] += 10
                 else:
-                    self.position[1] = 208
+                    self.position[1] = 216
 
             if command['left_pressed']:
                 if self.position[0] > 0:
@@ -59,10 +59,12 @@ class Character:
                     self.position[0] = 0
                 
             if command['right_pressed']:
-                if self.position[0] < 200:
+                if self.position[0] < 216:
                     self.position[0] += 10
                 else:
-                    self.position[0] = 208
+                    self.position[0] = 216
+        
+        self.center = np.array([self.position[0] + 12, self.position[1] + 12])
     
     def draw(self, draw_tool):
         x_start, y_start = self.position

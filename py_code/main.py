@@ -10,6 +10,7 @@ from Dot2 import Dot2
 from Flower import Flower
 from Grass import Grass
 from Joystick import Joystick
+from Test import Test
 
 def main():
     joystick = Joystick()
@@ -19,6 +20,7 @@ def main():
 
     # 잔상이 남지 않는 코드 & 대각선 이동 가능
     my_character = Character(joystick.width, joystick.height)
+    test = Test()
 
     while True:
         command = {'move': False, 'up_pressed': False , 'down_pressed': False, 'left_pressed': False, 'right_pressed': False}
@@ -39,6 +41,7 @@ def main():
             command['right_pressed'] = True
             command['move'] = True
 
+        test.move(my_character.center)
         my_character.move(command)
 
 
@@ -108,7 +111,7 @@ def main():
         Grass(25, 120).draw(my_draw)
         Grass(190, 10).draw(my_draw)
 
-        
+        test.draw(my_draw)
         my_character.draw(my_draw)
         #좌표는 동그라미의 왼쪽 위, 오른쪽 아래 점 (x1, y1, x2, y2)
         joystick.disp.image(my_image)
