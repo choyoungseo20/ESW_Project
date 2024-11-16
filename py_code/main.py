@@ -45,10 +45,10 @@ def main():
         Grass(150, 120), Grass(25, 120), Grass(190, 10)
     ]
     assignments = [
-        Assignment(-30, -30), Assignment(30, -30), Assignment(90, -30), Assignment(150, -30), Assignment(210, -30), 
-        Assignment(270, -30), Assignment(270, 30), Assignment(270, 90), Assignment(270, 150), Assignment(270, 210),
-        Assignment(270, 270), Assignment(210, 270), Assignment(150, 270), Assignment(90, 270), Assignment(30, 270), 
-        Assignment(-30, 270), Assignment(-30, 210), Assignment(-30, 150), Assignment(-30, 90), Assignment(-30, 30), 
+        Assignment(0, 0), Assignment(30, 0), Assignment(90, 0), Assignment(150, 0), Assignment(210, 0), 
+        Assignment(240, 0), Assignment(240, 30), Assignment(240, 90), Assignment(240, 150), Assignment(240, 210),
+        Assignment(240, 240), Assignment(210, 240), Assignment(150, 240), Assignment(90, 240), Assignment(30, 240), 
+        Assignment(0, 240), Assignment(0, 210), Assignment(0, 150), Assignment(0, 90), Assignment(0, 30), 
     ]
 
     assignmentArrows = []
@@ -89,7 +89,7 @@ def main():
         for assignmentArrow in assignmentArrows:
             assignmentArrow.move()
 
-        assignmentArrows = [assignmentArrow for assignmentArrow in assignmentArrows if -30 <= assignmentArrow.position[0] <= 270 and -30 <= assignmentArrow.position[1] <= 270]
+        assignmentArrows = [assignmentArrow for assignmentArrow in assignmentArrows if 0 <= assignmentArrow.position[0] <= 240 and 0 <= assignmentArrow.position[1] <= 240]
 
 
         my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
