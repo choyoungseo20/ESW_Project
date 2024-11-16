@@ -45,14 +45,14 @@ def main():
         Grass(150, 120), Grass(25, 120), Grass(190, 10)
     ]
     assignments = [
-        Assignment(-30, -30), Assignment(-30, 270), Assignment(270, -30), Assignment(270, 270), 
-        Assignment(30, -30), Assignment(90, -30), Assignment(150, -30), Assignment(210, -30), 
-        Assignment(30, 270), Assignment(90, 270), Assignment(150, 270), Assignment(210, 270), 
-        Assignment(-30, 30), Assignment(-30, 90), Assignment(-30, 150), Assignment(-30, 210), 
-        Assignment(270, 30), Assignment(270, 90), Assignment(270, 150), Assignment(270, 210), 
+        Assignment(-30, -30), Assignment(30, -30), Assignment(90, -30), Assignment(150, -30), Assignment(210, -30), 
+        Assignment(270, -30), Assignment(270, 30), Assignment(270, 90), Assignment(270, 150), Assignment(270, 210),
+        Assignment(270, 270), Assignment(210, 270), Assignment(150, 270), Assignment(90, 270), Assignment(30, 270), 
+        Assignment(-30, 270), Assignment(-30, 210), Assignment(-30, 150), Assignment(-30, 90), Assignment(-30, 30), 
     ]
 
     assignmentArrows = []
+    last_time = time.time()
     while True:
         command = {'move': False, 'up_pressed': False , 'down_pressed': False, 'left_pressed': False, 'right_pressed': False}
         
@@ -72,9 +72,14 @@ def main():
             command['right_pressed'] = True
             command['move'] = True
 
-        if not joystick.button_A.value: # A pressed
-            assignmentArrow = AssignmentArrow(assignments[0].position, my_character.center)
+
+        current_time = time.time()  # 현재 시간
+        if current_time - last_time >= 1:  # 1초가 경과하면
+            random_number = random.randint(0, 19)
+            assignmentArrow = AssignmentArrow(assignments[random_number].position, my_character.center)
             assignmentArrows.append(assignmentArrow)
+            last_time = current_time
+            
 
         test.move(my_character.center)
         my_character.move(command)
@@ -102,7 +107,7 @@ def main():
             my_character.draw(my_draw)
         test.draw(my_draw)
         for assignmentArrow in assignmentArrows:
-            my_draw.rectangle((assignmentArrow.position[0], assignmentArrow.position[1], assignmentArrow.position[0] + 6, assignmentArrow.position[1] + 6), fill = (0, 0, 255))
+            my_draw.ellipse((assignmentArrow.position[0], assignmentArrow.position[1], assignmentArrow.position[0] + 6, assignmentArrow.position[1] + 6), fill = (0, 0, 255))
 
         joystick.disp.image(my_image)
     

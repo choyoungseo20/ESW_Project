@@ -59,24 +59,24 @@ class Test:
 
         """
         if self.center[1] >= target_position[1]:
-            if self.center[1] - target_position[1] >= 5:
-                self.position[1] -=5
+            if self.center[1] - target_position[1] >= 3:
+                self.position[1] -= 3
             else:
                 self.position[1] -= self.center[1] - target_position[1]
         else:
-            if target_position[1] - self.center[1] >= 5:
-                self.position[1] +=5
+            if target_position[1] - self.center[1] >= 3:
+                self.position[1] += 3
             else:
                 self.position[1] += target_position[1] - self.center[1]
 
         if self.center[0] >= target_position[0]:
-            if self.center[0] - target_position[0] >= 5:
-                self.position[0] -=5
+            if self.center[0] - target_position[0] >= 3:
+                self.position[0] -= 3
             else:
                 self.position[0] -= self.center[0] - target_position[0]
         else:
-            if target_position[0] - self.center[0] >= 5:
-                self.position[0] +=5
+            if target_position[0] - self.center[0] >= 3:
+                self.position[0] += 3
             else:
                 self.position[0] += target_position[0] - self.center[0]
         

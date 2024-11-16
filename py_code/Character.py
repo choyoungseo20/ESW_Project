@@ -53,13 +53,13 @@ class Character:
                     self.position[1] = 216
 
             if command['left_pressed']:
-                if self.position[0] > 0:
+                if self.position[0] - 10 > 0:
                     self.position[0] -= 10
                 else:
                     self.position[0] = 0
                 
             if command['right_pressed']:
-                if self.position[0] < 216:
+                if self.position[0] + 10 < 216:
                     self.position[0] += 10
                 else:
                     self.position[0] = 216
