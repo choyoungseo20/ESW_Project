@@ -12,7 +12,12 @@ from Dot2 import Dot2
 from Flower import Flower
 from Grass import Grass
 from Joystick import Joystick
-from Stone import Stone
+from ScoreAPlus import ScoreAPlus
+from ScoreA import ScoreA
+from ScoreBPlus import ScoreBPlus
+from ScoreB import ScoreB
+from ScoreCPlus import ScoreCPlus
+from ScoreC import ScoreC
 from Test import Test
 
 def main():
@@ -58,7 +63,9 @@ def main():
         AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(),   
         AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(),
     ]
-    stone = Stone(0, 0)
+    score = [
+        ScoreAPlus(), ScoreA(), ScoreBPlus(), ScoreB(), ScoreCPlus(), ScoreC(), 
+    ]
 
 
     arrows = []
@@ -129,7 +136,8 @@ def main():
         for assignmentArrow in arrows:
             my_draw.ellipse((assignmentArrow.position[0], assignmentArrow.position[1], assignmentArrow.position[0] + 6, assignmentArrow.position[1] + 6), fill = (0, 0, 255))
 
-        stone.draw(my_draw)  
+        if my_character.grade < 6:    
+            score[my_character.grade].draw(my_draw)
 
         joystick.disp.image(my_image)
     
