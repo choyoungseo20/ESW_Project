@@ -11,6 +11,7 @@ from Dot1 import Dot1
 from Dot2 import Dot2
 from EndingCharacter1 import EndingCharacter1
 from EndingCharacter2 import EndingCharacter2
+from Exam import Exam
 from Flower import Flower
 from GameStart import GameStart
 from GameEnd1 import GameEnd1
@@ -26,7 +27,6 @@ from ScoreB import ScoreB
 from ScoreCPlus import ScoreCPlus
 from ScoreC import ScoreC
 from Stone import Stone
-from Test import Test
 
 def main():
     joystick = Joystick()
@@ -37,7 +37,7 @@ def main():
     info = Info()
     info_character = InfoCharacter()
     my_character = Character(joystick.width, joystick.height)
-    test = Test()  
+    exam = Exam()
 
     dots1 = [
         Dot1(10, 220), Dot1(11, 95), Dot1(12, 11), Dot1(19, 50),
@@ -101,6 +101,7 @@ def main():
 
     arrows = []
     last_time = time.time()
+    exam_time = time.time()
     i = 0
     stage = 1
     clear = True
@@ -135,13 +136,26 @@ def main():
                 i = (i + 1) % 25
                 arrows.append(arrow)
             last_time = current_time
+
+        current_time = time.time()  # 현재 시간
+        if current_time - exam_time >= 30 and exam.state != 'alive':  # 30초가 경과하면
+            random_number = random.randint(0, 3)
+            if random_number == 0:
+                exam.run(0, 0, 3)
+            elif random_number == 1:
+                exam.run(0, 224, 3)
+            elif random_number == 2:
+                exam.run(224, 0, 3)
+            else:
+                exam.run(224, 224, 3)
             
+            exam_time = current_time
 
         my_character.move(command)
 
-        if test.state == 'alive':
-            test.move(my_character.center)
-            test.collision_check(my_character)
+        if exam.state == 'alive':
+            exam.move(my_character.center)
+            exam.collision_check(my_character)
 
         for assignmentArrow in arrows:
             if assignmentArrow.state == 'alive':
@@ -166,8 +180,8 @@ def main():
             my_character.draw(my_draw)
         else:
             clear = False
-        if test.state == 'alive':
-            test.draw(my_draw)
+        if exam.state == 'alive':
+            exam.draw(my_draw)
         for assignmentArrow in arrows:
             my_draw.ellipse((assignmentArrow.position[0] - 3, assignmentArrow.position[1] - 3, assignmentArrow.position[0] + 3, assignmentArrow.position[1] + 3), fill = (255, 0, 0))
             my_draw.ellipse((assignmentArrow.position[0] - 1, assignmentArrow.position[1] - 1, assignmentArrow.position[0] + 1, assignmentArrow.position[1] + 1), fill = (255, 255, 255))
@@ -201,6 +215,7 @@ def main():
                 my_character.retry(joystick.width, joystick.height)
                 arrows = []
                 last_time = time.time()
+                exam_time = time.time()
                 i = 0
                 stage = 1
                 clear = True

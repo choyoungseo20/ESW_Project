@@ -1,11 +1,11 @@
 import numpy as np
 import math
 
-class Test:
+class Exam:
     def __init__(self):
         self.appearance = 'retro'
         self.state = None      
-        self.speed = 3
+        self.speed = None
         self.position = None
         self.center = None
         self.pixel_map = [
@@ -47,8 +47,9 @@ class Test:
             "..........ddddd......ddddd..........",
         ]
 
-    def run(self, x, y):
+    def run(self, x, y, speed):
         self.state = 'alive'
+        self.speed = speed
         self.position = np.array([x, y])
         self.center = np.array([self.position[0] + 18, self.position[1] + 18])
 
