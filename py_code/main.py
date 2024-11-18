@@ -94,15 +94,18 @@ def main():
             last_time = current_time
             
 
-        test.move(my_character.center)
         my_character.move(command)
-        
-        test.collision_check(my_character)
+
+        if test.state != 'die':
+            test.move(my_character.center)
+            test.collision_check(my_character)
 
         for assignmentArrow in arrows:
-            assignmentArrow.move()
+            if assignmentArrow.state != 'die':
+                assignmentArrow.move()
+                assignmentArrow.collision_check(my_character)
 
-        arrows = [assignmentArrow for assignmentArrow in arrows if 0 <= assignmentArrow.position[0] <= 240 and 0 <= assignmentArrow.position[1] <= 240]
+        arrows = [assignmentArrow for assignmentArrow in arrows if 0 <= assignmentArrow.position[0] <= 240 and 0 <= assignmentArrow.position[1] <= 240 and assignmentArrow.state != 'die']
 
 
         my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
@@ -118,7 +121,8 @@ def main():
 
         if my_character.state != 'die':    
             my_character.draw(my_draw)
-        test.draw(my_draw)
+        if test.state != 'die':
+            test.draw(my_draw)
         for assignmentArrow in arrows:
             my_draw.ellipse((assignmentArrow.position[0], assignmentArrow.position[1], assignmentArrow.position[0] + 6, assignmentArrow.position[1] + 6), fill = (0, 0, 255))
 
