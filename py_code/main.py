@@ -9,8 +9,12 @@ from AssignmentArrow import AssignmentArrow
 from Character import Character
 from Dot1 import Dot1
 from Dot2 import Dot2
+from EndingCharacter1 import EndingCharacter1
+from EndingCharacter2 import EndingCharacter2
 from Flower import Flower
 from GameStart import GameStart
+from GameEnd1 import GameEnd1
+from GameEnd2 import GameEnd2
 from Grass import Grass
 from Info import Info
 from InfoCharacter import InfoCharacter
@@ -21,6 +25,7 @@ from ScoreBPlus import ScoreBPlus
 from ScoreB import ScoreB
 from ScoreCPlus import ScoreCPlus
 from ScoreC import ScoreC
+from Stone import Stone
 from Test import Test
 
 def main():
@@ -97,6 +102,7 @@ def main():
     arrows = []
     last_time = time.time()
     i = 0
+    clear = True
     while True:
         command = {'move': False, 'up_pressed': False , 'down_pressed': False, 'left_pressed': False, 'right_pressed': False}
         
@@ -167,6 +173,115 @@ def main():
 
         if my_character.grade < 6:    
             score[my_character.grade].draw(my_draw)
+
+        joystick.disp.image(my_image)
+
+
+
+    # Ending
+    if clear:
+        stone = Stone()
+        ec1 = EndingCharacter1()
+
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        for d1 in dots1:
+            d1.draw(my_draw)
+        for d2 in dots2:
+            d2.draw(my_draw)
+        for f in flowers:
+            f.draw(my_draw)
+        for g in grass:
+            g.draw(my_draw)
+
+        ec1.move(5, 140, 2)
+        ec1.draw(my_draw)
+        stone.draw(my_draw)
+
+        joystick.disp.image(my_image)
+
+        time.sleep(1)
+
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        for d1 in dots1:
+            d1.draw(my_draw)
+        for d2 in dots2:
+            d2.draw(my_draw)
+        for f in flowers:
+            f.draw(my_draw)
+        for g in grass:
+            g.draw(my_draw)
+
+        ec1.move(80, 120, 2)
+        ec1.draw(my_draw)
+        stone.draw(my_draw)
+
+        joystick.disp.image(my_image)
+
+        time.sleep(1)
+
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        for d1 in dots1:
+            d1.draw(my_draw)
+        for d2 in dots2:
+            d2.draw(my_draw)
+        for f in flowers:
+            f.draw(my_draw)
+        for g in grass:
+            g.draw(my_draw)
+
+        ec1.move(100, 80, 1)
+        ec1.draw(my_draw)
+        stone.draw(my_draw)
+
+        joystick.disp.image(my_image)
+
+        time.sleep(1)
+
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        for d1 in dots1:
+            d1.draw(my_draw)
+        for d2 in dots2:
+            d2.draw(my_draw)
+        for f in flowers:
+            f.draw(my_draw)
+        for g in grass:
+            g.draw(my_draw)
+
+        stone.draw(my_draw)
+
+        joystick.disp.image(my_image)
+
+        time.sleep(1)
+
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        for d1 in dots1:
+            d1.draw(my_draw)
+        for d2 in dots2:
+            d2.draw(my_draw)
+        for f in flowers:
+            f.draw(my_draw)
+        for g in grass:
+            g.draw(my_draw)
+
+        ec1.move(80, 15, 2)
+        ec1.draw(my_draw)
+        stone.draw(my_draw)
+
+        joystick.disp.image(my_image)
+
+    else:
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        for d1 in dots1:
+            d1.draw(my_draw)
+        for d2 in dots2:
+            d2.draw(my_draw)
+        for f in flowers:
+            f.draw(my_draw)
+        for g in grass:
+            g.draw(my_draw)
+
+        gameStart.draw(my_draw)
+        EndingCharacter2(5, 140, 2).draw(my_draw)
 
         joystick.disp.image(my_image)
     

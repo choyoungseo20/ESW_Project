@@ -1,6 +1,6 @@
 import numpy as np
 
-class Stone:
+class GameEnd2:
     def __init__(self):
         self.position = np.array([3, 20])
         self.pixel_map = [
