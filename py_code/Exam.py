@@ -9,42 +9,19 @@ class Exam:
         self.position = None
         self.center = None
         self.pixel_map = [
-            "...............ddddddd..............",
-            "..............ddddddddd.............",
-            ".............ddgggggggdd............",
-            ".............ddgggggggdd............",
-            "............ddgggggggdd.............",
-            "..........dddgggggggdddd............",
-            ".........ddbbbbbbbbbbbbbdd..........",
-            "........ddbbbbbbbbbbbbbbbdd.........",
-            ".......ddbbbbbbbbbbbbbddbbdd........",
-            "......ddbbbbbbbbbbbbbbddbbbdd.......",
-            ".....ddbbbbbbbbbbbbddbbbbbbbdd......",
-            "....ddbbddbbbbbbbbbddbbbddbbbdd.....",
-            "...ddbbbddbbbbbbbbbbbbbbddbbbbdd....",
-            "...ddbbbbbbbbbbsssssssssbbbbbbdd....",
-            "..ddbbbbbbbbsssssssssssssbbbbbdd....",
-            "..ddbbbbbbbsssssssssssssssbbbbdd....",
-            "..ddbbbbbbsssssssssssssssssbbbbdd...",
-            ".ddbbbbbssssddssssssssddsssssbbbdd..",
-            ".ddbbbbsssssddssssssssddsssssbbbdd..",
-            ".dddbbbsssssddssssssssddsssssbbbbdd.",
-            "ddssbbbsspppsssssddssssspppssbbbssdd",
-            "ddssbbbsspppsssssddssssspppssbbbssdd",
-            "ddssbbbbbsssssddddddddsssssbbbbbssdd",
-            "ddssbbbbbsssssddddddddsssssbbbbbssdd",
-            "ddssbbddbbbssssssssssssssbbbbbbbssdd",
-            "ddssbbddbbbssssssssssssssbbbbddbssdd",
-            ".dddbbbbbbbbbbbbbbbbbbbbbbbbbddbddd.",
-            "..ddbbbbddbbbbbbbbbbbbbbbbddbbbbdd..",
-            "...ddbbbddbbbbbbbbbbbbbbbbddbbbdd...",
-            "....ddbbbbbbbbbbbbbbbbbbbbbbbbdd....",
-            ".....ddbbbbbbbbbbbbbbbbbbbbbbdd.....",
-            "......ddbbbbbbbbbbbbbbbbbbbbdd......",
-            "........ddsssssddddddsssssdd........",
-            "........ddsssssdd..ddsssssdd........",
-            ".........ddddddd....ddddddd.........",
-            "..........ddddd......ddddd..........",
+            ".bbbbbbbbbbb.",
+            "bwwwwwwwwwwwb",
+            "bwrwwrwwwrwwb",
+            "bwrwrwrwrwrwb",
+            "bwrwrwrwrwrwb",
+            "bwrwwrwwwrwwb",
+            "bwwwwwwwwwwwb",
+            "bwbbbbwbbbbb.",
+            "bwwwwwbwwwwwb",
+            "bwbbbwbwwbwwb",
+            "bwwwwwbwwbwwb",
+            "bwwwwwbwwwwwb",
+            ".bbbbb.bbbbb.",
         ]
 
     def run(self, x, y, speed):
@@ -93,29 +70,21 @@ class Exam:
         x_start, y_start = self.position
         for y, row in enumerate(self.pixel_map):
             for x, pixel in enumerate(row):
-                if pixel == "d":
-                    x0 = x_start + x
-                    y0 = y_start + y
-                    draw_tool.rectangle([x0, y0, x0 + 1, y0 + 1], fill = (0, 0, 0))
+                if pixel == "r":
+                    x0 = x_start + x * 3
+                    y0 = y_start + y * 3
+                    draw_tool.rectangle([x0, y0, x0 + 3, y0 + 3], fill = (255, 0, 0))
                 if pixel == "b":
-                    x0 = x_start + x
-                    y0 = y_start + y
-                    draw_tool.rectangle([x0, y0, x0 + 1, y0 + 1], fill = (219, 188, 130))
-                if pixel == "s":
-                    x0 = x_start + x
-                    y0 = y_start + y
-                    draw_tool.rectangle([x0, y0, x0 + 1, y0 + 1], fill = (254, 224, 172))
-                if pixel == "g":
-                    x0 = x_start + x
-                    y0 = y_start + y
-                    draw_tool.rectangle([x0, y0, x0 + 1, y0 + 1], fill = (34, 177, 76))
-                if pixel == "p":
-                    x0 = x_start + x
-                    y0 = y_start + y
-                    draw_tool.rectangle([x0, y0, x0 + 1, y0 + 1], fill = (255, 174, 201))
+                    x0 = x_start + x * 3
+                    y0 = y_start + y * 3
+                    draw_tool.rectangle([x0, y0, x0 + 3, y0 + 3], fill = (0, 0, 0))
+                if pixel == "w":
+                    x0 = x_start + x * 3
+                    y0 = y_start + y * 3
+                    draw_tool.rectangle([x0, y0, x0 + 3, y0 + 3], fill = (255, 255, 255))
 
     def collision_check(self, user):
-        collision = self.overlap(self.position, user.center)
+        collision = self.overlap(self.center, user.center)
             
         if collision:
             self.state = 'die'
@@ -130,6 +99,10 @@ class Exam:
             True : if overlap
             False : if not overlap
         '''
-        if ego_position[0] + 36 < other_position[0] or ego_position[0] > other_position[0] or ego_position[1] + 36 < other_position[1] or ego_position[1] > other_position[1]:
+        # if ego_position[0] + 36 < other_position[0] or ego_position[0] > other_position[0] or ego_position[1] + 36 < other_position[1] or ego_position[1] > other_position[1]:
+        #     return False  # 겹치지 않음
+        # return True  # 겹침
+
+        if (ego_position[0] - other_position[0])**2 + (ego_position[1] - other_position[1])**2 >= (18)**2:
             return False  # 겹치지 않음
         return True  # 겹침

@@ -138,7 +138,7 @@ def main():
             last_time = current_time
 
         current_time = time.time()  # 현재 시간
-        if current_time - exam_time >= 30 and exam.state != 'alive':  # 30초가 경과하면
+        if current_time - exam_time >= 1 and exam.state != 'alive':  # 30초가 경과하면
             random_number = random.randint(0, 3)
             if random_number == 0:
                 exam.run(0, 0, 3)
@@ -181,6 +181,7 @@ def main():
         else:
             clear = False
         if exam.state == 'alive':
+            my_draw.ellipse((exam.center[0] - 18, exam.center[1] - 18, exam.center[0] + 18, exam.center[1] + 18), fill = (255, 255, 255))
             exam.draw(my_draw)
         for assignmentArrow in arrows:
             my_draw.ellipse((assignmentArrow.position[0] - 3, assignmentArrow.position[1] - 3, assignmentArrow.position[0] + 3, assignmentArrow.position[1] + 3), fill = (255, 0, 0))
