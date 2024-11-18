@@ -12,6 +12,8 @@ from Dot2 import Dot2
 from Flower import Flower
 from GameStart import GameStart
 from Grass import Grass
+from Info import Info
+from InfoCharacter import InfoCharacter
 from Joystick import Joystick
 from ScoreAPlus import ScoreAPlus
 from ScoreA import ScoreA
@@ -27,6 +29,8 @@ def main():
     my_draw = ImageDraw.Draw(my_image)
 
     gameStart = GameStart()
+    info = Info()
+    info_character = InfoCharacter()
     my_character = Character(joystick.width, joystick.height)
     test = Test()  
 
@@ -85,6 +89,8 @@ def main():
             g.draw(my_draw)
 
         gameStart.draw(my_draw)
+        info_character.draw(my_draw)
+        info.draw(my_draw)
 
         joystick.disp.image(my_image)
 

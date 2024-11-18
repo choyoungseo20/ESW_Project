@@ -31,10 +31,6 @@ class Stone:
         x_start, y_start = self.position
         for y, row in enumerate(self.pixel_map):
             for x, pixel in enumerate(row):
-                if pixel == ".":
-                    x0 = x_start + x * 2
-                    y0 = y_start + y * 2
-                    draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (155, 219, 71))
                 if pixel == "a":
                     x0 = x_start + x * 2
                     y0 = y_start + y * 2
