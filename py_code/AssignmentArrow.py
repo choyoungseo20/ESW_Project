@@ -12,7 +12,7 @@ class AssignmentArrow:
         self.velocity = None
 
     def run(self, start_position, other_position):
-        self.state = None
+        self.state = 'alive'
         self.position = np.array([start_position[0], start_position[1]])
         self.direction = np.array([other_position[0] - start_position[0], other_position[1] - start_position[1]])
         self.magnitude = math.sqrt(self.direction[0]**2 + self.direction[1]**2)

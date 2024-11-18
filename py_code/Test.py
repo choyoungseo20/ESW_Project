@@ -6,8 +6,8 @@ class Test:
         self.appearance = 'retro'
         self.state = None      
         self.speed = 5
-        self.position = np.array([0, 0])
-        self.center = np.array([self.position[0] + 18, self.position[1] + 18])
+        self.position = None
+        self.center = None
         self.pixel_map = [
             "...............ddddddd..............",
             "..............ddddddddd.............",
@@ -46,6 +46,11 @@ class Test:
             ".........ddddddd....ddddddd.........",
             "..........ddddd......ddddd..........",
         ]
+
+    def run(self, x, y):
+        self.state = 'alive'
+        self.position = np.array([x, y])
+        self.center = np.array([self.position[0] + 18, self.position[1] + 18])
 
     def move(self, target_position):
         """
