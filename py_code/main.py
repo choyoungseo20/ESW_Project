@@ -7,27 +7,27 @@ from colorsys import hsv_to_rgb
 from Assignment import Assignment
 from AssignmentArrow import AssignmentArrow
 from Character import Character
-from Dot1 import Dot1
-from Dot2 import Dot2
-from EndingCharacter1 import EndingCharacter1
-from EndingCharacter2 import EndingCharacter2
+from Background import Dot1
+from Background import Dot2
+from Background import Flower
+from Background import Grass
 from Exam import Exam
-from Flower import Flower
-from GameStart import GameStart
-from GameEnd1 import GameEnd1
-from GameEnd2 import GameEnd2
-from Grass import Grass
-from Info import Info
-from InfoCharacter import InfoCharacter
+from Etc import GameStart
+from Etc import InfoCharacter
+from Etc import Info
+from Etc import GameEnd1
+from Etc import GameEnd2
+from Etc import EndingCharacter1
+from Etc import EndingCharacter2
+from Etc import Stone
 from Joystick import Joystick
 from Portal import Portal
-from ScoreAPlus import ScoreAPlus
-from ScoreA import ScoreA
-from ScoreBPlus import ScoreBPlus
-from ScoreB import ScoreB
-from ScoreCPlus import ScoreCPlus
-from ScoreC import ScoreC
-from Stone import Stone
+from Score import ScoreAPlus
+from Score import ScoreA
+from Score import ScoreBPlus
+from Score import ScoreB
+from Score import ScoreCPlus
+from Score import ScoreC
 
 def main():
     joystick = Joystick()
@@ -105,6 +105,7 @@ def main():
     last_time = time.time()
     exam_time = time.time()
     portal_time = time.time()
+    stage_flag = [False, False, False, False, False, False, False, False,]
     i = 0
     clear = True
     while True:
@@ -125,6 +126,37 @@ def main():
         if not joystick.button_R.value:  # right pressed
             command['right_pressed'] = True
             command['move'] = True
+        
+        
+        # 다음 단계 진입 시
+        if stage_flag[my_character.term - 1] == False:
+            my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+            for d1 in dots1:
+                d1.draw(my_draw)
+            for d2 in dots2:
+                d2.draw(my_draw)
+            for f in flowers:
+                f.draw(my_draw)
+            for g in grass:
+                g.draw(my_draw)
+
+            joystick.disp.image(my_image)
+
+            my_character.reset(joystick.width, joystick.height)
+            last_time = time.time()
+            exam_time = time.time()
+            portal_time = time.time()
+            exam.state = None
+            portal.state = None
+            for assignmentArrow in arrows:
+                assignmentArrow.state = None
+            arrows = []
+            i = 0
+
+            stage_flag[my_character.term - 1] = True
+            if stage_flag[7] == True:
+                break
+
 
 
         current_time = time.time()  # 현재 시간
@@ -160,6 +192,10 @@ def main():
             portal.run(random_number1, random_number2)
             
             portal_time = current_time
+
+        
+
+
 
         my_character.move(command)
 
@@ -232,9 +268,14 @@ def main():
 
             if not joystick.button_A.value:
                 my_character.retry(joystick.width, joystick.height)
-                arrows = []
                 last_time = time.time()
                 exam_time = time.time()
+                portal_time = time.time()
+                exam.state = None
+                portal.state = None
+                for assignmentArrow in arrows:
+                    assignmentArrow.state = None
+                arrows = []
                 i = 0
                 clear = True
 
