@@ -22,25 +22,25 @@ class EndingCharacter2:
             "..ddbbbbbbbbsssssssssssssbbbbbdd....",
             "..ddbbbbbbbsssssssssssssssbbbbdd....",
             "..ddbbbbbbsssssssssssssssssbbbbdd...",
-            ".ddbbbbbssssddssssssssddsssssbbbdd..",
-            ".ddbbbbsssssddssssssssddsssssbbbdd..",
-            ".dddbbbsssssddssssssssddsssssbbbbdd.",
-            "ddssbbbsspppsssssddssssspppssbbbsssd",
-            "ddssbbbsspppsssssddssssspppssbbbsssd",
-            "ddssbbbbbsssssddddddddsssssbbbbbsssd",
-            "ddssbbbbbsssssddddddddsssssbbbbbsssd",
-            "ddssbbddbbbssssssssssssssbbbbbbbsssd",
-            "ddssbbddbbbssssssssssssssbbbbddbsssd",
-            ".dddbbbbbbbbbbbbbbbbbbbbbbbbbddbddd.",
-            "..ddbbbbddbbbbbbbbbbbbbbbbddbbbbdd..",
-            "...ddbbbddbbbbbbbbbbbbbbbbddbbbdd...",
-            "....ddbbbbbbbbbbbbbbbbbbbbbbbbdd....",
-            ".....ddbbbbbbbbbbbbbbbbbbbbbbdd.....",
-            "......ddbbbbbbbbbbbbbbbbbbbbdd......",
-            "........ddsssssddddddsssssdd........",
-            "........ddsssssdd..ddsssssdd........",
-            ".........ddddddd....ddddddd.........",
-            "..........ddddd......ddddd..........",
+            ".ddbbbwwwwsssssssssssssssswwwwbbdd..",
+            ".ddbbwwwwwddddssssssssddddwwwwwbdd..",
+            ".dddwwwwwwwwddssssssssddwwwwwwwwbdd.",
+            "ddswwwwsspppsssssddssssspppsswwwwssd",
+            "ddwwwwbsspppsssssddssssspppssbwwwwsd",
+            "dwwwwwbbbsssssddddddddsssssbbbwwwwwd",
+            "dwwwwwbbbsssssddddddddsssssbbbwwwwwd",
+            "dwwwwwddbbbssssssssssssssbbbbbwwwwwd",
+            "dwwwwwddbbbssssssssssssssbbbbdwwwwwd",
+            ".wwwwwbbbbbbbbbbbbbbbbbbbbbbbdwwwww.",
+            ".wwwwwbbddbbbbbbbbbbbbbbbbddbbwwwww.",
+            ".wwwwwbbddbbbbbbbbbbbbbbbbddbbwwwww.",
+            ".wwwwwbbbbbbbbbbbbbbbbbbbbbbbbwwwww.",
+            ".wwwwwdbbbbbbbbbbbbbbbbbbbbbbdwwwww.",
+            ".wwwwwddbbbbbbbbbbbbbbbbbbbbddwwwww.",
+            ".wwwww..ddsssssddddddsssssdd..wwwww.",
+            ".wwwww..ddsssssdd..ddsssssdd..wwwww.",
+            "wwwwww.wwddddddd....dddddddww.wwwwww",
+            "wwwwwwww..ddddd......ddddd..wwwwwwww",
         ]
 
     def move(self, x, y, size):
@@ -71,3 +71,7 @@ class EndingCharacter2:
                     x0 = x_start + x * self.size
                     y0 = y_start + y * self.size
                     draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (255, 174, 201))
+                if pixel == "w":
+                    x0 = x_start + x * self.size
+                    y0 = y_start + y * self.size
+                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (83, 176, 231))

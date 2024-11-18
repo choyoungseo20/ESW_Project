@@ -164,6 +164,7 @@ def main():
         if my_character.grade < 6:    
             my_character.draw(my_draw)
         else:
+            clear = False
             break
         if test.state == 'alive':
             test.draw(my_draw)
@@ -181,6 +182,7 @@ def main():
     # Ending
     if clear:
         stone = Stone()
+        gameEnd1 = GameEnd1()
         ec1 = EndingCharacter1()
 
         my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
@@ -265,11 +267,14 @@ def main():
 
         ec1.move(80, 15, 2)
         ec1.draw(my_draw)
-        stone.draw(my_draw)
+        gameEnd1.draw(my_draw)
 
         joystick.disp.image(my_image)
 
     else:
+        gameEnd2 = GameEnd2()
+        ec2 = EndingCharacter2()
+
         my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
         for d1 in dots1:
             d1.draw(my_draw)
@@ -280,8 +285,9 @@ def main():
         for g in grass:
             g.draw(my_draw)
 
-        gameStart.draw(my_draw)
-        EndingCharacter2(5, 140, 2).draw(my_draw)
+        ec2.move(80, 140, 2)
+        ec2.draw(my_draw)
+        gameEnd2.draw(my_draw)
 
         joystick.disp.image(my_image)
     
