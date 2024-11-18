@@ -136,7 +136,8 @@ def main():
         if test.state == 'alive':
             test.draw(my_draw)
         for assignmentArrow in arrows:
-            my_draw.ellipse((assignmentArrow.position[0], assignmentArrow.position[1], assignmentArrow.position[0] + 6, assignmentArrow.position[1] + 6), fill = (0, 0, 255))
+            my_draw.ellipse((assignmentArrow.position[0] - 3, assignmentArrow.position[1] - 3, assignmentArrow.position[0] + 3, assignmentArrow.position[1] + 3), fill = (255, 0, 0))
+            my_draw.ellipse((assignmentArrow.position[0] - 1, assignmentArrow.position[1] - 1, assignmentArrow.position[0] + 1, assignmentArrow.position[1] + 1), fill = (255, 255, 255))
 
         if my_character.grade < 6:    
             score[my_character.grade].draw(my_draw)
