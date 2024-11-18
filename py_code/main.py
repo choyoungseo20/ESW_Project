@@ -54,7 +54,8 @@ def main():
         AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
         AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
         AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
-        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
+        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(),   
+        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(),
     ]
 
 
@@ -89,7 +90,7 @@ def main():
                 arrow = assignmentArrows[i]
                 start_position = assignments[(random_number + offset) % 20].position
                 assignmentArrows[i].run(start_position, my_character.center)
-                i = (i + 1) % 20
+                i = (i + 1) % 25
                 arrows.append(arrow)
             last_time = current_time
             

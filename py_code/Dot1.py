@@ -1,10 +1,8 @@
 import numpy as np
 
 class Dot1:
-    def __init__(self, width, height):
-        self.appearance = 'retro'
-        self.state = None
-        self.position = np.array([width, height])
+    def __init__(self, x, y):
+        self.position = np.array([x, y])
         self.pixel_map = [
             "."
             ]

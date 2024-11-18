@@ -5,7 +5,7 @@ class AssignmentArrow:
     def __init__(self):
         self.appearance = 'retro'
         self.state = None
-        self.speed = 5
+        self.speed = 7
         self.position = None
         self.direction = None
         self.magnitude = None
