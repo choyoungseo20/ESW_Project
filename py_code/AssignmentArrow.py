@@ -31,15 +31,8 @@ class AssignmentArrow:
             user.grade -= 1
 
     def overlap(self, ego_position, other_position):
-        '''
-        두개의 사각형(bullet position, enemy position)이 겹치는지 확인하는 함수
-        좌표 표현 : [x1, y1, x2, y2]
-        
-        return :
-            True : if overlap
-            False : if not overlap
-        '''
-        if ego_position[0] + 6 < other_position[0] - 10 or ego_position[0] > other_position[0] + 10 or ego_position[1] + 6 < other_position[1] - 10 or ego_position[1] > other_position[1] + 10:
+
+        if (ego_position[0] - other_position[0])**2 + (ego_position[1] - other_position[1])**2 >= (12 + 3)**2:
             return False  # 겹치지 않음
         return True  # 겹침
     
