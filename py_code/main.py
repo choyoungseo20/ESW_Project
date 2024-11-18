@@ -10,6 +10,7 @@ from Character import Character
 from Dot1 import Dot1
 from Dot2 import Dot2
 from Flower import Flower
+from GameStart import GameStart
 from Grass import Grass
 from Joystick import Joystick
 from ScoreAPlus import ScoreAPlus
@@ -25,8 +26,10 @@ def main():
     my_image = Image.new("RGB", (joystick.width, joystick.height)) 
     my_draw = ImageDraw.Draw(my_image)
 
+    gameStart = GameStart()
     my_character = Character(joystick.width, joystick.height)
-    test = Test()
+    test = Test()  
+
     dots1 = [
         Dot1(10, 220), Dot1(11, 95), Dot1(12, 11), Dot1(19, 50),
         Dot1(41, 87), Dot1(48, 52), Dot1(49, 104), Dot1(56, 152),
@@ -67,6 +70,23 @@ def main():
         ScoreAPlus(), ScoreA(), ScoreBPlus(), ScoreB(), ScoreCPlus(), ScoreC(), 
     ]
 
+    while True:
+        if not joystick.button_A.value: # A pressed
+            break
+
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        for d1 in dots1:
+            d1.draw(my_draw)
+        for d2 in dots2:
+            d2.draw(my_draw)
+        for f in flowers:
+            f.draw(my_draw)
+        for g in grass:
+            g.draw(my_draw)
+
+        gameStart.draw(my_draw)
+
+        joystick.disp.image(my_image)
 
     arrows = []
     last_time = time.time()
