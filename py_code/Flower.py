@@ -22,7 +22,7 @@ class Flower:
                 if pixel == "r":
                     x0 = x_start + x * 6
                     y0 = y_start + y * 6
-                    draw_tool.rectangle([x0, y0, x0 + 6, y0 + 6], fill = (255, 30, 39))
+                    draw_tool.rectangle([x0, y0, x0 + 6, y0 + 6], fill = (203, 218, 218)) # (255, 30, 39)
                 if pixel == "s":
                     x0 = x_start + x * 6
                     y0 = y_start + y * 6
