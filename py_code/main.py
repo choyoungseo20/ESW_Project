@@ -131,6 +131,8 @@ def main():
 
         if my_character.grade < 6:    
             my_character.draw(my_draw)
+        else:
+            break
         if test.state == 'alive':
             test.draw(my_draw)
         for assignmentArrow in arrows:
