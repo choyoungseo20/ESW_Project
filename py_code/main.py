@@ -102,6 +102,7 @@ def main():
     arrows = []
     last_time = time.time()
     i = 0
+    stage = 1
     clear = True
     while True:
         command = {'move': False, 'up_pressed': False , 'down_pressed': False, 'left_pressed': False, 'right_pressed': False}
@@ -165,7 +166,6 @@ def main():
             my_character.draw(my_draw)
         else:
             clear = False
-            break
         if test.state == 'alive':
             test.draw(my_draw)
         for assignmentArrow in arrows:
@@ -177,9 +177,34 @@ def main():
 
         joystick.disp.image(my_image)
 
+        while clear == False:
+            gameEnd2 = GameEnd2()
+            ec2 = EndingCharacter2()
 
+            my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+            for d1 in dots1:
+                d1.draw(my_draw)
+            for d2 in dots2:
+                d2.draw(my_draw)
+            for f in flowers:
+                f.draw(my_draw)
+            for g in grass:
+                g.draw(my_draw)
 
-    # Ending
+            ec2.move(80, 140, 2)
+            ec2.draw(my_draw)
+            gameEnd2.draw(my_draw)
+
+            joystick.disp.image(my_image)
+
+            if not joystick.button_A.value:
+                my_character.retry(joystick.width, joystick.height)
+                arrows = []
+                last_time = time.time()
+                i = 0
+                stage = 1
+                clear = True
+
     if clear:
         stone = Stone()
         gameEnd1 = GameEnd1()
@@ -271,25 +296,9 @@ def main():
 
         joystick.disp.image(my_image)
 
-    else:
-        gameEnd2 = GameEnd2()
-        ec2 = EndingCharacter2()
 
-        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
-        for d1 in dots1:
-            d1.draw(my_draw)
-        for d2 in dots2:
-            d2.draw(my_draw)
-        for f in flowers:
-            f.draw(my_draw)
-        for g in grass:
-            g.draw(my_draw)
 
-        ec2.move(80, 140, 2)
-        ec2.draw(my_draw)
-        gameEnd2.draw(my_draw)
-
-        joystick.disp.image(my_image)
+    
     
 
 if __name__ == '__main__':

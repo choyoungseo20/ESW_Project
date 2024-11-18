@@ -33,6 +33,12 @@ class Character:
             "....ddssssssssssssdd....",
             "......dddddddddddd......",
         ]
+    
+    def retry(self, width, height):
+        self.state = None
+        self.grade = 0 # A+
+        self.position = np.array([width//2 - 12, height//2 - 12])
+        self.center = np.array([self.position[0] + 12, self.position[1] + 12])
 
     def move(self, command = None):
         if command['move'] == False:
