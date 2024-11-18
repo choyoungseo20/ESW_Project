@@ -118,7 +118,7 @@ class Test:
             
         if collision:
             self.state = 'die'
-            user.grade -= 1
+            user.grade += 2
 
     def overlap(self, ego_position, other_position):
         '''

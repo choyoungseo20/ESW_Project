@@ -122,25 +122,12 @@ def main():
             g.draw(my_draw)
 
 
-        if my_character.grade >= 0:    
+        if my_character.grade < 6:    
             my_character.draw(my_draw)
         if test.state == 'alive':
             test.draw(my_draw)
         for assignmentArrow in arrows:
             my_draw.ellipse((assignmentArrow.position[0], assignmentArrow.position[1], assignmentArrow.position[0] + 6, assignmentArrow.position[1] + 6), fill = (0, 0, 255))
-
-        if my_character.grade == 6:
-            my_draw.text((10, 10), "A+", fill=(0, 0, 0)) 
-        elif my_character.grade == 5:
-            my_draw.text((10, 10), "A", fill=(0, 0, 0))
-        elif my_character.grade == 4:
-            my_draw.text((10, 10), "B+", fill=(0, 0, 0))
-        elif my_character.grade == 3:
-            my_draw.text((10, 10), "B", fill=(0, 0, 0))
-        elif my_character.grade == 2:
-            my_draw.text((10, 10), "C+", fill=(0, 0, 0))  
-        elif my_character.grade == 1:
-            my_draw.text((10, 10), "C", fill=(0, 0, 0))
 
         stone.draw(my_draw)  
 
