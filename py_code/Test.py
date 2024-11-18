@@ -5,7 +5,7 @@ class Test:
     def __init__(self):
         self.appearance = 'retro'
         self.state = None      
-        self.speed = 5
+        self.speed = 3
         self.position = None
         self.center = None
         self.pixel_map = [
@@ -64,24 +64,24 @@ class Test:
 
         """
         if self.center[1] >= target_position[1]:
-            if self.center[1] - target_position[1] >= 3:
-                self.position[1] -= 3
+            if self.center[1] - target_position[1] >= self.speed:
+                self.position[1] -= self.speed
             else:
                 self.position[1] -= self.center[1] - target_position[1]
         else:
-            if target_position[1] - self.center[1] >= 3:
-                self.position[1] += 3
+            if target_position[1] - self.center[1] >= self.speed:
+                self.position[1] += self.speed
             else:
                 self.position[1] += target_position[1] - self.center[1]
 
         if self.center[0] >= target_position[0]:
-            if self.center[0] - target_position[0] >= 3:
-                self.position[0] -= 3
+            if self.center[0] - target_position[0] >= self.speed:
+                self.position[0] -= self.speed
             else:
                 self.position[0] -= self.center[0] - target_position[0]
         else:
-            if target_position[0] - self.center[0] >= 3:
-                self.position[0] += 3
+            if target_position[0] - self.center[0] >= self.speed:
+                self.position[0] += self.speed
             else:
                 self.position[0] += target_position[0] - self.center[0]
         
@@ -117,8 +117,8 @@ class Test:
         collision = self.overlap(self.position, user.center)
             
         if collision:
-            user.state = 'die'
             self.state = 'die'
+            user.grade -= 1
 
     def overlap(self, ego_position, other_position):
         '''

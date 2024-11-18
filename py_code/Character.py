@@ -4,6 +4,7 @@ class Character:
     def __init__(self, width, height):
         self.appearance = 'retro'
         self.state = None
+        self.grade = 6 # A+
         self.position = np.array([width//2 - 12, height//2 - 12])
         self.center = np.array([self.position[0] + 12, self.position[1] + 12])
         self.pixel_map = [

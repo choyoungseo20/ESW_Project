@@ -27,8 +27,8 @@ class AssignmentArrow:
         collision = self.overlap(self.position, user.center)
             
         if collision:
-            user.state = 'die'
             self.state = 'die'
+            user.grade -= 1
 
     def overlap(self, ego_position, other_position):
         '''
