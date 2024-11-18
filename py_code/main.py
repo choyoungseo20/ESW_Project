@@ -84,10 +84,13 @@ def main():
         current_time = time.time()  # 현재 시간
         if current_time - last_time >= 1:  # 1초가 경과하면
             random_number = random.randint(0, 19)
-            assignmentArrow = assignmentArrows[i]
-            assignmentArrows[i].run(assignments[random_number].position, my_character.center)
-            i = (i + 1) % 20
-            arrows.append(assignmentArrow)
+            for j in range(1):  # n번 반복
+                offset = 10 * j  # 각 화살의 offset
+                arrow = assignmentArrows[i]
+                start_position = assignments[(random_number + offset) % 20].position
+                assignmentArrows[i].run(start_position, my_character.center)
+                i = (i + 1) % 20
+                arrows.append(arrow)
             last_time = current_time
             
 
