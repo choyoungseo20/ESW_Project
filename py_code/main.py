@@ -50,9 +50,17 @@ def main():
         Assignment(240, 240), Assignment(210, 240), Assignment(150, 240), Assignment(90, 240), Assignment(30, 240), 
         Assignment(0, 240), Assignment(0, 210), Assignment(0, 150), Assignment(0, 90), Assignment(0, 30), 
     ]
+    assignmentArrows = [
+        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
+        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
+        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
+        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
+    ]
 
-    assignmentArrows = []
+
+    arrows = []
     last_time = time.time()
+    i = 0
     while True:
         command = {'move': False, 'up_pressed': False , 'down_pressed': False, 'left_pressed': False, 'right_pressed': False}
         
@@ -76,8 +84,10 @@ def main():
         current_time = time.time()  # 현재 시간
         if current_time - last_time >= 1:  # 1초가 경과하면
             random_number = random.randint(0, 19)
-            assignmentArrow = AssignmentArrow(assignments[random_number].position, my_character.center)
-            assignmentArrows.append(assignmentArrow)
+            assignmentArrow = assignmentArrows[i]
+            assignmentArrows[i].run(assignments[random_number].position, my_character.center)
+            i = (i + 1) % 20
+            arrows.append(assignmentArrow)
             last_time = current_time
             
 
@@ -86,10 +96,10 @@ def main():
         
         test.collision_check(my_character)
 
-        for assignmentArrow in assignmentArrows:
+        for assignmentArrow in arrows:
             assignmentArrow.move()
 
-        assignmentArrows = [assignmentArrow for assignmentArrow in assignmentArrows if 0 <= assignmentArrow.position[0] <= 240 and 0 <= assignmentArrow.position[1] <= 240]
+        arrows = [assignmentArrow for assignmentArrow in arrows if 0 <= assignmentArrow.position[0] <= 240 and 0 <= assignmentArrow.position[1] <= 240]
 
 
         my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
@@ -106,7 +116,7 @@ def main():
         if my_character.state != 'die':    
             my_character.draw(my_draw)
         test.draw(my_draw)
-        for assignmentArrow in assignmentArrows:
+        for assignmentArrow in arrows:
             my_draw.ellipse((assignmentArrow.position[0], assignmentArrow.position[1], assignmentArrow.position[0] + 6, assignmentArrow.position[1] + 6), fill = (0, 0, 255))
 
         joystick.disp.image(my_image)
