@@ -12,6 +12,7 @@ from Dot2 import Dot2
 from Flower import Flower
 from Grass import Grass
 from Joystick import Joystick
+from Stone import Stone
 from Test import Test
 
 def main():
@@ -57,6 +58,7 @@ def main():
         AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(),   
         AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(),
     ]
+    stone = Stone(0, 0)
 
 
     arrows = []
@@ -138,7 +140,9 @@ def main():
         elif my_character.grade == 2:
             my_draw.text((10, 10), "C+", fill=(0, 0, 0))  
         elif my_character.grade == 1:
-            my_draw.text((10, 10), "C", fill=(0, 0, 0))  
+            my_draw.text((10, 10), "C", fill=(0, 0, 0))
+
+        stone.draw(my_draw)  
 
         joystick.disp.image(my_image)
     
