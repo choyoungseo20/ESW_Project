@@ -20,6 +20,7 @@ from Grass import Grass
 from Info import Info
 from InfoCharacter import InfoCharacter
 from Joystick import Joystick
+from Portal import Portal
 from ScoreAPlus import ScoreAPlus
 from ScoreA import ScoreA
 from ScoreBPlus import ScoreBPlus
@@ -38,6 +39,7 @@ def main():
     info_character = InfoCharacter()
     my_character = Character(joystick.width, joystick.height)
     exam = Exam()
+    portal = Portal()
 
     dots1 = [
         Dot1(10, 220), Dot1(11, 95), Dot1(12, 11), Dot1(19, 50),
@@ -102,8 +104,8 @@ def main():
     arrows = []
     last_time = time.time()
     exam_time = time.time()
+    portal_time = time.time()
     i = 0
-    stage = 1
     clear = True
     while True:
         command = {'move': False, 'up_pressed': False , 'down_pressed': False, 'left_pressed': False, 'right_pressed': False}
@@ -138,7 +140,7 @@ def main():
             last_time = current_time
 
         current_time = time.time()  # 현재 시간
-        if current_time - exam_time >= 1 and exam.state != 'alive':  # 30초가 경과하면
+        if current_time - exam_time >= 30 and exam.state != 'alive':  # 30초가 경과하면
             random_number = random.randint(0, 3)
             if random_number == 0:
                 exam.run(0, 0, 3)
@@ -150,6 +152,14 @@ def main():
                 exam.run(224, 224, 3)
             
             exam_time = current_time
+
+        current_time = time.time()  # 현재 시간
+        if current_time - portal_time >= 3 and portal.state != 'alive':  # 30초가 경과하면
+            random_number1 = random.randint(12, 228)
+            random_number2 = random.randint(12, 228)
+            portal.run(random_number1, random_number2)
+            
+            portal_time = current_time
 
         my_character.move(command)
 
@@ -163,6 +173,9 @@ def main():
                 assignmentArrow.collision_check(my_character)
 
         arrows = [assignmentArrow for assignmentArrow in arrows if 0 <= assignmentArrow.position[0] <= 240 and 0 <= assignmentArrow.position[1] <= 240 and assignmentArrow.state == 'alive']
+
+        if portal.state == 'alive':
+            portal.collision_check(my_character)
 
 
         my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
@@ -186,6 +199,11 @@ def main():
         for assignmentArrow in arrows:
             my_draw.ellipse((assignmentArrow.position[0] - 3, assignmentArrow.position[1] - 3, assignmentArrow.position[0] + 3, assignmentArrow.position[1] + 3), fill = (255, 0, 0))
             my_draw.ellipse((assignmentArrow.position[0] - 1, assignmentArrow.position[1] - 1, assignmentArrow.position[0] + 1, assignmentArrow.position[1] + 1), fill = (255, 255, 255))
+
+        if portal.state == 'alive':
+            my_draw.ellipse((portal.position[0] - 15, portal.position[1] - 15, portal.position[0] + 15, portal.position[1] + 15), fill = (119, 110, 230))
+            my_draw.ellipse((portal.position[0] - 10, portal.position[1] - 10, portal.position[0] + 10, portal.position[1] + 10), fill = (73, 157, 225))
+            my_draw.ellipse((portal.position[0] - 5, portal.position[1] - 5, portal.position[0] + 5, portal.position[1] + 5), fill = (255, 255, 255))
 
         if my_character.grade < 6:    
             score[my_character.grade].draw(my_draw)
@@ -218,7 +236,6 @@ def main():
                 last_time = time.time()
                 exam_time = time.time()
                 i = 0
-                stage = 1
                 clear = True
 
     if clear:

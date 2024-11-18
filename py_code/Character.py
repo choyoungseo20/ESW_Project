@@ -5,6 +5,7 @@ class Character:
         self.appearance = 'retro'
         self.state = None
         self.grade = 0 # A+
+        self.term = 1 # 1-1
         self.position = np.array([width//2 - 12, height//2 - 12])
         self.center = np.array([self.position[0] + 12, self.position[1] + 12])
         self.pixel_map = [
@@ -37,6 +38,7 @@ class Character:
     def retry(self, width, height):
         self.state = None
         self.grade = 0 # A+
+        self.term = 1 # 1-1
         self.position = np.array([width//2 - 12, height//2 - 12])
         self.center = np.array([self.position[0] + 12, self.position[1] + 12])
 
