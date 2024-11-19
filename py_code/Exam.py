@@ -3,7 +3,6 @@ import math
 
 class Exam:
     def __init__(self):
-        self.appearance = 'retro'
         self.state = None      
         self.speed = None
         self.position = None

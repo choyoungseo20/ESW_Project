@@ -3,7 +3,6 @@ import math
 
 class AssignmentArrow:
     def __init__(self):
-        self.appearance = 'retro'
         self.state = None
         self.speed = 7
         self.position = None

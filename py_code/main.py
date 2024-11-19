@@ -11,7 +11,6 @@ from Background import Dot1
 from Background import Dot2
 from Background import Flower
 from Background import Grass
-from Exam import Exam
 from Etc import GameStart
 from Etc import InfoCharacter
 from Etc import Info
@@ -20,6 +19,8 @@ from Etc import GameEnd2
 from Etc import EndingCharacter1
 from Etc import EndingCharacter2
 from Etc import Stone
+from Exam import Exam
+from Item import GreatNote
 from Joystick import Joystick
 from Portal import Portal
 from Score import ScoreAPlus
@@ -47,6 +48,7 @@ def main():
     info_character = InfoCharacter()
     my_character = Character(joystick.width, joystick.height)
     exam = Exam()
+    greateNote = GreatNote()
     portal = Portal()
 
     dots1 = [
@@ -115,6 +117,7 @@ def main():
     arrows = []
     last_time = time.time()
     exam_time = time.time()
+    item1_time = time.time()
     portal_time = time.time()
     stage_flag = [False, False, False, False, False, False, False, False, False]
     i = 0
@@ -161,8 +164,10 @@ def main():
             my_character.reset(joystick.width, joystick.height)
             last_time = time.time()
             exam_time = time.time()
+            item1_time = time.time()
             portal_time = time.time()
             exam.state = None
+            greateNote.state = None
             portal.state = None
             for assignmentArrow in arrows:
                 assignmentArrow.state = None
@@ -200,10 +205,25 @@ def main():
             exam_time = current_time
 
         current_time = time.time()  # 현재 시간
+        if current_time - item1_time >= 3 and greateNote.state != 'alive':  # 30초가 경과하면
+            random_number1 = random.randint(0, 214)
+            random_number2 = random.randint(40, 214)
+            greateNote.run(random_number1, random_number2)
+            
+            item1_time = current_time
+
+        current_time = time.time()  # 현재 시간
         if current_time - portal_time >= 3 and portal.state != 'alive':  # 30초가 경과하면
-            random_number1 = random.randint(12, 228)
-            random_number2 = random.randint(12, 228)
-            portal.run(random_number1, random_number2)
+            random_number = random.randint(0, 3)
+            if random_number == 0:
+                portal.run(12, 52)
+            elif random_number == 1:
+                portal.run(12, 228)
+            elif random_number == 2:
+                portal.run(228, 12)
+            else:
+                portal.run(228, 228)
+            
             
             portal_time = current_time
 
@@ -224,7 +244,9 @@ def main():
 
         arrows = [assignmentArrow for assignmentArrow in arrows if 0 <= assignmentArrow.position[0] <= 240 and 0 <= assignmentArrow.position[1] <= 240 and assignmentArrow.state == 'alive']
 
-        
+
+        if greateNote.state == 'alive':
+            greateNote.collision_check(my_character)        
 
         if portal.state == 'alive':
             portal.collision_check(my_character)
@@ -247,17 +269,22 @@ def main():
             my_character.draw(my_draw)
         else:
             clear = False
+
+        if greateNote.state == 'alive':
+            greateNote.draw(my_draw)
+
+        if portal.state == 'alive':
+            my_draw.ellipse((portal.position[0] - 15, portal.position[1] - 15, portal.position[0] + 15, portal.position[1] + 15), fill = (137, 47, 255))
+            my_draw.ellipse((portal.position[0] - 10, portal.position[1] - 10, portal.position[0] + 10, portal.position[1] + 10), fill = (73, 157, 225))
+            my_draw.ellipse((portal.position[0] - 5, portal.position[1] - 5, portal.position[0] + 5, portal.position[1] + 5), fill = (255, 255, 255))
+
         if exam.state == 'alive':
             my_draw.ellipse((exam.center[0] - 18, exam.center[1] - 18, exam.center[0] + 18, exam.center[1] + 18), fill = (255, 255, 255))
             exam.draw(my_draw)
+
         for assignmentArrow in arrows:
             my_draw.ellipse((assignmentArrow.position[0] - 3, assignmentArrow.position[1] - 3, assignmentArrow.position[0] + 3, assignmentArrow.position[1] + 3), fill = (255, 0, 0))
             my_draw.ellipse((assignmentArrow.position[0] - 1, assignmentArrow.position[1] - 1, assignmentArrow.position[0] + 1, assignmentArrow.position[1] + 1), fill = (255, 255, 255))
-
-        if portal.state == 'alive':
-            my_draw.ellipse((portal.position[0] - 15, portal.position[1] - 15, portal.position[0] + 15, portal.position[1] + 15), fill = (119, 110, 230))
-            my_draw.ellipse((portal.position[0] - 10, portal.position[1] - 10, portal.position[0] + 10, portal.position[1] + 10), fill = (73, 157, 225))
-            my_draw.ellipse((portal.position[0] - 5, portal.position[1] - 5, portal.position[0] + 5, portal.position[1] + 5), fill = (255, 255, 255))
 
         if my_character.grade < 6:    
             score[my_character.grade].draw(my_draw)
@@ -288,8 +315,10 @@ def main():
                 my_character.retry(joystick.width, joystick.height)
                 last_time = time.time()
                 exam_time = time.time()
+                item1_time = time.time()
                 portal_time = time.time()
                 exam.state = None
+                greateNote.state = None
                 portal.state = None
                 for assignmentArrow in arrows:
                     assignmentArrow.state = None
