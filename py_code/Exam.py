@@ -3,22 +3,38 @@ import math
 
 class Exam:
     def __init__(self):
-        self.state = None      
+        self.state = None
+        self.item2 = False    
         self.speed = None
         self.position = None
         self.center = None
-        self.pixel_map = [
+        self.pixel_map1 = [
+            ".bbbbbbbbbbb.",
+            "bwwwwwwwwwwwb",
+            "bwwwwwrwwwwwb",
+            "bwwwwrwrwwwwb",
+            "bwwwwrwrwwwwb",
+            "bwwwwwrwwwwwb",
+            "bwwwwwwbbbbb.",
+            "bwbbbwbwwwwwb",
+            "bwwwwwbwwbwwb",
+            "bwbbbwbwwbwwb",
+            "bwwwwwbwwwbwb",
+            "bwwwwwbwwwwwb",
+            ".bbbbb.bbbbb.",
+        ]
+        self.pixel_map2 = [
             ".bbbbbbbbbbb.",
             "bwwwwwwwwwwwb",
             "bwrwwrwwwrwwb",
             "bwrwrwrwrwrwb",
             "bwrwrwrwrwrwb",
             "bwrwwrwwwrwwb",
-            "bwwwwwwwwwwwb",
-            "bwbbbbwbbbbb.",
-            "bwwwwwbwwwwwb",
-            "bwbbbwbwwbwwb",
+            "bwwwwwwbbbbb.",
+            "bwbbbwbwwwwwb",
             "bwwwwwbwwbwwb",
+            "bwbbbwbwwbwwb",
+            "bwwwwwbwwwbwb",
             "bwwwwwbwwwwwb",
             ".bbbbb.bbbbb.",
         ]
@@ -67,6 +83,10 @@ class Exam:
 
     def draw(self, draw_tool):
         x_start, y_start = self.position
+        if self.item2:
+            pixel_map = self.pixel_map2
+        else:
+            pixel_map = self.pixel_map1
         for y, row in enumerate(self.pixel_map):
             for x, pixel in enumerate(row):
                 if pixel == "r":
