@@ -21,6 +21,7 @@ from Etc import EndingCharacter2
 from Etc import Stone
 from Exam import Exam
 from Item import GreatNote
+from Item import PastExam
 from Joystick import Joystick
 from Portal import Portal
 from Score import ScoreAPlus
@@ -49,6 +50,7 @@ def main():
     my_character = Character(joystick.width, joystick.height)
     exam = Exam()
     greateNote = GreatNote()
+    pastExam = PastExam()
     portal = Portal()
 
     dots1 = [
@@ -118,6 +120,7 @@ def main():
     last_time = time.time()
     exam_time = time.time()
     item1_time = time.time()
+    item2_time = time.time()
     portal_time = time.time()
     stage_flag = [False, False, False, False, False, False, False, False, False]
     i = 0
@@ -165,9 +168,11 @@ def main():
             last_time = time.time()
             exam_time = time.time()
             item1_time = time.time()
+            item2_time = time.time()
             portal_time = time.time()
             exam.state = None
             greateNote.state = None
+            pastExam.state = None
             portal.state = None
             for assignmentArrow in arrows:
                 assignmentArrow.state = None
@@ -213,6 +218,14 @@ def main():
             item1_time = current_time
 
         current_time = time.time()  # 현재 시간
+        if current_time - item2_time >= 3 and pastExam.state != 'alive':  # 30초가 경과하면
+            random_number1 = random.randint(80, 214)
+            random_number2 = random.randint(0, 214)
+            pastExam.run(random_number1, random_number2)
+            
+            item2_time = current_time
+
+        current_time = time.time()  # 현재 시간
         if current_time - portal_time >= 3 and portal.state != 'alive':  # 30초가 경과하면
             random_number = random.randint(0, 3)
             if random_number == 0:
@@ -246,7 +259,10 @@ def main():
 
 
         if greateNote.state == 'alive':
-            greateNote.collision_check(my_character)        
+            greateNote.collision_check(my_character)    
+
+        if pastExam.state == 'alive':
+            pastExam.collision_check(my_character)    
 
         if portal.state == 'alive':
             portal.collision_check(my_character)
@@ -272,6 +288,9 @@ def main():
 
         if greateNote.state == 'alive':
             greateNote.draw(my_draw)
+        
+        if pastExam.state == 'alive':
+            pastExam.draw(my_draw)
 
         if portal.state == 'alive':
             my_draw.ellipse((portal.position[0] - 15, portal.position[1] - 15, portal.position[0] + 15, portal.position[1] + 15), fill = (137, 47, 255))
@@ -316,9 +335,11 @@ def main():
                 last_time = time.time()
                 exam_time = time.time()
                 item1_time = time.time()
+                item2_time = time.time()
                 portal_time = time.time()
                 exam.state = None
                 greateNote.state = None
+                pastExam.state = None
                 portal.state = None
                 for assignmentArrow in arrows:
                     assignmentArrow.state = None
