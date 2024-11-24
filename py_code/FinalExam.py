@@ -1,42 +1,26 @@
 import numpy as np
 import math
 
-class Exam:
+class FinalExam:
     def __init__(self):
         self.state = None
-        self.item2 = None  
         self.speed = None
         self.position = None
         self.center = None
-        self.pixel_map1 = [
-            ".bbbbbbbbbbb.",
-            "bwwwwwwwwwwwb",
-            "bwwwwwrwwwwwb",
-            "bwwwwrwrwwwwb",
-            "bwwwwrwrwwwwb",
-            "bwwwwwrwwwwwb",
-            "bwwwwwwbbbbb.",
-            "bwbbbwbwwwwwb",
-            "bwwwwwbwwbwwb",
-            "bwbbbwbwwbwwb",
-            "bwwwwwbwwwbwb",
-            "bwwwwwbwwwwwb",
-            ".bbbbb.bbbbb.",
-        ]
-        self.pixel_map2 = [
-            ".bbbbbbbbbbb.",
-            "bwwwwwwwwwwwb",
-            "bwrwwrwwwrwwb",
-            "bwrwrwrwrwrwb",
-            "bwrwrwrwrwrwb",
-            "bwrwwrwwwrwwb",
-            "bwwwwwwbbbbb.",
-            "bwbbbwbwwwwwb",
-            "bwwwwwbwwbwwb",
-            "bwbbbwbwwbwwb",
-            "bwwwwwbwwwbwb",
-            "bwwwwwbwwwwwb",
-            ".bbbbb.bbbbb.",
+        self.pixel_map = [
+            ".rrrrrrrrrrr.",
+            "rwwwwwwwwwwwr",
+            "rwrwrwwwrwrwr",
+            "rwwrwwwwwrwwr",
+            "rwrwrwwwrwrwr",
+            "rwwwwwwwwwwwr",
+            "rwwwwwwrrrrr.",
+            "rwrrrwrwwwwwr",
+            "rwwwwwrwwrwwr",
+            "rwrrrwrwwrwwr",
+            "rwwwwwrwrwwwr",
+            "rwwwwwrwwwwwr",
+            ".rrrrr.rrrrr.",
         ]
 
     def run(self, x, y, speed):
@@ -47,16 +31,6 @@ class Exam:
         self.center = np.array([self.position[0] + 18, self.position[1] + 18])
 
     def move(self, target_position):
-        """
-        direction = np.array([target_position[0] - self.center[0], target_position[1] - self.center[1]])
-        magnitude = math.sqrt(direction[0]**2 + direction[1]**2)
-        velocity = np.array([(direction[0] / magnitude) * self.speed, (direction[1] / magnitude) * self.speed])
-        self.position[0] += velocity[0]
-        self.position[1] += velocity[1]
-
-        self.center = np.array([self.position[0] + 18, self.position[1] + 18])
-
-        """
         if self.center[1] >= target_position[1]:
             if self.center[1] - target_position[1] >= self.speed:
                 self.position[1] -= self.speed
@@ -84,11 +58,7 @@ class Exam:
 
     def draw(self, draw_tool):
         x_start, y_start = self.position
-        if self.item2:
-            pixel_map = self.pixel_map2
-        else:
-            pixel_map = self.pixel_map1
-        for y, row in enumerate(pixel_map):
+        for y, row in enumerate(self.pixel_map):
             for x, pixel in enumerate(row):
                 if pixel == "r":
                     x0 = x_start + x * 3
@@ -108,23 +78,9 @@ class Exam:
             
         if collision:
             self.state = 'die'
-            if self.item2:
-                if user.grade >= 2:
-                    user.grade -= 2
-                else:
-                    user.grade = 0
-            else:
-                user.grade += 2
+            user.grade += 3
 
     def overlap(self, ego_position, other_position):
-        '''
-        두개의 사각형(bullet position, enemy position)이 겹치는지 확인하는 함수
-        좌표 표현 : [x1, y1, x2, y2]
-        
-        return :
-            True : if overlap
-            False : if not overlap
-        '''
         # if ego_position[0] + 36 < other_position[0] or ego_position[0] > other_position[0] or ego_position[1] + 36 < other_position[1] or ego_position[1] > other_position[1]:
         #     return False  # 겹치지 않음
         # return True  # 겹침

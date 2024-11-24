@@ -8,18 +8,18 @@ class ScoreAPlus:
             "...aaaaaabcccccccccccccccccccccccd......",
             "..caaaaaabcccccccccccccccccccccccdd.....",
             ".ccceeeeeebfffffffffffffeeeeeeeeebddd...",
-            "ccceeeeeeeebfffffffbbffeeeeebbeeeebddd..",
-            "aceeeeeeeeeeeffffffbbfeeeeeebbeeeeebdg..",
-            "aaeeeeeeeeeeeeffffbbbbeeeebbbbbbeeebgg..",
-            ".aaeeeeeeeeeeeefffbbbbeeeebbbbbbeeebgg..",
-            ".aaeeeeeeeeefffffbbefbbeeeeebbeeeeffbgg.",
-            ".aaeeeeeeefffffffbbffbbeeeeebbeeffffbgg.",
-            "..aaeeeefffffffebbffffbbeeeeeeffffffbgg.",
-            "..aaceefffffffefbbbbbbbbeeeeefffffffbgg.",
-            "..ccfffffffhhhhbbbbbbbbbbeefffffffffbgg.",
-            ".ccffffffhhhhhhbbhhhhhhbbhhfffffffffbgg.",
-            "ccfffffiiiiiiibbihhhhhhhbbhfffffffffbgg.",
-            ".aaffiiiiiiiiibbiiiiiiiibbiiiiiffffbgg..",
+            "ccceeeeeeeebfffffffkkffeeeeekkeeeebddd..",
+            "aceeeeeeeeeeeffffffkkfeeeeeekkeeeeebdg..",
+            "aaeeeeeeeeeeeeffffkkkkeeeekkkkkkeeebgg..",
+            ".aaeeeeeeeeeeeefffkkkkeeeekkkkkkeeebgg..",
+            ".aaeeeeeeeeefffffkkefkkeeeeekkeeeeffbgg.",
+            ".aaeeeeeeefffffffkkffkkeeeeekkeeffffbgg.",
+            "..aaeeeefffffffekkffffkkeeeeeeffffffbgg.",
+            "..aaceefffffffefkkkkkkkkeeeeefffffffbgg.",
+            "..ccfffffffhhhhkkkkkkkkkkeefffffffffbgg.",
+            ".ccffffffhhhhhhkkhhhhhhkkhhfffffffffbgg.",
+            "ccfffffiiiiiiikkihhhhhhhkkhfffffffffbgg.",
+            ".aaffiiiiiiiiikkiiiiiiiikkiiiiiffffbgg..",
             ".aafiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibgg...",
             "..ggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbgg...",
             "...ggggggggggggggjjjgggggggggggggggg....",
@@ -71,6 +71,10 @@ class ScoreAPlus:
                     x0 = x_start + x * 2
                     y0 = y_start + y * 2
                     draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (90, 90, 90))
+                if pixel == "k":
+                    x0 = x_start + x * 2
+                    y0 = y_start + y * 2
+                    draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (230, 230, 230))
 
 
 class ScoreA:
@@ -81,18 +85,18 @@ class ScoreA:
             "...aaaaaabcccccccccccccccccccccccd......",
             "..caaaaaabcccccccccccccccccccccccdd.....",
             ".ccceeeeeebfffffffffffffeeeeeeeeebddd...",
-            "ccceeeeeeeebfffffffbbffeeeeeeeeeeebddd..",
-            "aceeeeeeeeeeeffffffbbfeeeeeeeeeeeeebdg..",
-            "aaeeeeeeeeeeeeffffbbbbeeeeeeeeeeeeebgg..",
-            ".aaeeeeeeeeeeeefffbbbbeeeeeeeeeeeeebgg..",
-            ".aaeeeeeeeeefffffbbefbbeeeeeeeeeeeffbgg.",
-            ".aaeeeeeeefffffffbbffbbeeeeeeeeeffffbgg.",
-            "..aaeeeefffffffebbffffbbeeeeeeffffffbgg.",
-            "..aaceefffffffefbbbbbbbbeeeeefffffffbgg.",
-            "..ccfffffffhhhhbbbbbbbbbbeefffffffffbgg.",
-            ".ccffffffhhhhhhbbhhhhhhbbhhfffffffffbgg.",
-            "ccfffffiiiiiiibbihhhhhhhbbhfffffffffbgg.",
-            ".aaffiiiiiiiiibbiiiiiiiibbiiiiiffffbgg..",
+            "ccceeeeeeeebfffffffkkffeeeeeeeeeeebddd..",
+            "aceeeeeeeeeeeffffffkkfeeeeeeeeeeeeebdg..",
+            "aaeeeeeeeeeeeeffffkkkkeeeeeeeeeeeeebgg..",
+            ".aaeeeeeeeeeeeefffkkkkeeeeeeeeeeeeebgg..",
+            ".aaeeeeeeeeefffffkkefkkeeeeeeeeeeeffbgg.",
+            ".aaeeeeeeefffffffkkffkkeeeeeeeeeffffbgg.",
+            "..aaeeeefffffffekkffffkkeeeeeeffffffbgg.",
+            "..aaceefffffffefkkkkkkkkeeeeefffffffbgg.",
+            "..ccfffffffhhhhkkkkkkkkkkeefffffffffbgg.",
+            ".ccffffffhhhhhhkkhhhhhhkkhhfffffffffbgg.",
+            "ccfffffiiiiiiikkihhhhhhhkkhfffffffffbgg.",
+            ".aaffiiiiiiiiikkiiiiiiiikkiiiiiffffbgg..",
             ".aafiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibgg...",
             "..ggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbgg...",
             "...ggggggggggggggjjjgggggggggggggggg....",
@@ -144,6 +148,10 @@ class ScoreA:
                     x0 = x_start + x * 2
                     y0 = y_start + y * 2
                     draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (90, 90, 90))
+                if pixel == "k":
+                    x0 = x_start + x * 2
+                    y0 = y_start + y * 2
+                    draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (230, 230, 230))
 
 
 class ScoreBPlus:
@@ -154,18 +162,18 @@ class ScoreBPlus:
             "...aaaaaabcccccccccccccccccccccccd......",
             "..caaaaaabcccccccccccccccccccccccdd.....",
             ".ccceeeeeebfffffffffffffeeeeeeeeebddd...",
-            "ccceeeeeeeebffffbbbbbbfeeeeebbeeeebddd..",
-            "aceeeeeeeeeeefffbbbbbbbeeeeebbeeeeebdg..",
-            "aaeeeeeeeeeeeeffbbffeebbeebbbbbbeeebgg..",
-            ".aaeeeeeeeeeeeefbbffeebbeebbbbbbeeebgg..",
-            ".aaeeeeeeeeeffffbbfeeebbeeeebbeeeeffbgg.",
-            ".aaeeeeeeeffffffbbbbbbbeeeeebbeeffffbgg.",
-            "..aaeeeefffffffebbbbbbbeeeeeeeffffffbgg.",
-            "..aaceefffffffefbbffffbbeeeeefffffffbgg.",
-            "..ccfffffffhhhhhbbhhffbbfeefffffffffbgg.",
-            ".ccffffffhhhhhhhbbhhhhbbhhhfffffffffbgg.",
-            "ccfffffiiiiiiiiibbbbbbbhhhhfffffffffbgg.",
-            ".aaffiiiiiiiiiiibbbbbbiiiiiiiiiffffbgg..",
+            "ccceeeeeeeebffffkkkkkkfeeeeekkeeeebddd..",
+            "aceeeeeeeeeeefffkkkkkkkeeeeekkeeeeebdg..",
+            "aaeeeeeeeeeeeeffkkffeekkeekkkkkkeeebgg..",
+            ".aaeeeeeeeeeeeefkkffeekkeekkkkkkeeebgg..",
+            ".aaeeeeeeeeeffffkkfeeekkeeeekkeeeeffbgg.",
+            ".aaeeeeeeeffffffkkkkkkkeeeeekkeeffffbgg.",
+            "..aaeeeefffffffekkkkkkkeeeeeeeffffffbgg.",
+            "..aaceefffffffefkkffffkkeeeeefffffffbgg.",
+            "..ccfffffffhhhhhkkhhffkkfeefffffffffbgg.",
+            ".ccffffffhhhhhhhkkhhhhkkhhhfffffffffbgg.",
+            "ccfffffiiiiiiiiikkkkkkkhhhhfffffffffbgg.",
+            ".aaffiiiiiiiiiiikkkkkkiiiiiiiiiffffbgg..",
             ".aafiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibgg...",
             "..ggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbgg...",
             "...ggggggggggggggjjjgggggggggggggggg....",
@@ -217,6 +225,10 @@ class ScoreBPlus:
                     x0 = x_start + x * 2
                     y0 = y_start + y * 2
                     draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (90, 90, 90))
+                if pixel == "k":
+                    x0 = x_start + x * 2
+                    y0 = y_start + y * 2
+                    draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (230, 230, 230))
 
 
 class ScoreB:
@@ -227,18 +239,18 @@ class ScoreB:
             "...aaaaaabcccccccccccccccccccccccd......",
             "..caaaaaabcccccccccccccccccccccccdd.....",
             ".ccceeeeeebfffffffffffffeeeeeeeeebddd...",
-            "ccceeeeeeeebffffbbbbbbfeeeeeeeeeeebddd..",
-            "aceeeeeeeeeeefffbbbbbbbeeeeeeeeeeeebdg..",
-            "aaeeeeeeeeeeeeffbbffeebbeeeeeeeeeeebgg..",
-            ".aaeeeeeeeeeeeefbbffeebbeeeeeeeeeeebgg..",
-            ".aaeeeeeeeeeffffbbfeeebbeeeeeeeeeeffbgg.",
-            ".aaeeeeeeeffffffbbbbbbbeeeeeeeeeffffbgg.",
-            "..aaeeeefffffffebbbbbbbeeeeeeeffffffbgg.",
-            "..aaceefffffffefbbffffbbeeeeefffffffbgg.",
-            "..ccfffffffhhhhhbbhhffbbfeefffffffffbgg.",
-            ".ccffffffhhhhhhhbbhhhhbbhhhfffffffffbgg.",
-            "ccfffffiiiiiiiiibbbbbbbhhhhfffffffffbgg.",
-            ".aaffiiiiiiiiiiibbbbbbiiiiiiiiiffffbgg..",
+            "ccceeeeeeeebffffkkkkkkfeeeeeeeeeeebddd..",
+            "aceeeeeeeeeeefffkkkkkkkeeeeeeeeeeeebdg..",
+            "aaeeeeeeeeeeeeffkkffeekkeeeeeeeeeeebgg..",
+            ".aaeeeeeeeeeeeefkkffeekkeeeeeeeeeeebgg..",
+            ".aaeeeeeeeeeffffkkfeeekkeeeeeeeeeeffbgg.",
+            ".aaeeeeeeeffffffkkkkkkkeeeeeeeeeffffbgg.",
+            "..aaeeeefffffffekkkkkkkeeeeeeeffffffbgg.",
+            "..aaceefffffffefkkffffkkeeeeefffffffbgg.",
+            "..ccfffffffhhhhhkkhhffkkfeefffffffffbgg.",
+            ".ccffffffhhhhhhhkkhhhhkkhhhfffffffffbgg.",
+            "ccfffffiiiiiiiiikkkkkkkhhhhfffffffffbgg.",
+            ".aaffiiiiiiiiiiikkkkkkiiiiiiiiiffffbgg..",
             ".aafiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibgg...",
             "..ggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbgg...",
             "...ggggggggggggggjjjgggggggggggggggg....",
@@ -290,6 +302,10 @@ class ScoreB:
                     x0 = x_start + x * 2
                     y0 = y_start + y * 2
                     draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (90, 90, 90))
+                if pixel == "k":
+                    x0 = x_start + x * 2
+                    y0 = y_start + y * 2
+                    draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (230, 230, 230))
 
 
 class ScoreCPlus:
@@ -300,18 +316,18 @@ class ScoreCPlus:
             "...aaaaaabcccccccccccccccccccccccd......",
             "..caaaaaabcccccccccccccccccccccccdd.....",
             ".ccceeeeeebfffffffffffffeeeeeeeeebddd...",
-            "ccceeeeeeeebffffffbbbbfeeeeebbeeeebddd..",
-            "aceeeeeeeeeeefffbbbbbbbbeeeebbeeeeebdg..",
-            "aaeeeeeeeeeeeefbbffffeebbebbbbbbeeebgg..",
-            ".aaeeeeeeeeeeeebbfffeeebbebbbbbbeeebgg..",
-            ".aaeeeeeeeeeffbbfffefeeeeeeebbeeeeffbgg.",
-            ".aaeeeeeeeffffbbfeffffeeeeeebbeeffffbgg.",
-            "..aaeeeeffffffbbfffffffeeeeeeeffffffbgg.",
-            "..aaceefffffffbbfffffffffeeeefffffffbgg.",
-            "..ccfffffffhhhhbbhhhfffbbeefffffffffbgg.",
-            ".ccffffffhhhhhhbbhhhhhhbbhhfffffffffbgg.",
-            "ccfffffiiiiiiiiibbbbbbbbhhhfffffffffbgg.",
-            ".aaffiiiiiiiiiiiiibbbbiiiiiiiiiffffbgg..",
+            "ccceeeeeeeebffffffkkkkfeeeeekkeeeebddd..",
+            "aceeeeeeeeeeefffkkkkkkkkeeeekkeeeeebdg..",
+            "aaeeeeeeeeeeeefkkkfffekkkekkkkkkeeebgg..",
+            ".aaeeeeeeeeeeeekkfffeeekkekkkkkkeeebgg..",
+            ".aaeeeeeeeeeffkkfffefeeeeeeekkeeeeffbgg.",
+            ".aaeeeeeeeffffkkfeffffeeeeeekkeeffffbgg.",
+            "..aaeeeeffffffkkfffffffeeeeeeeffffffbgg.",
+            "..aaceefffffffkkfffffffffeeeefffffffbgg.",
+            "..ccfffffffhhhhkkhhhfffkkeefffffffffbgg.",
+            ".ccffffffhhhhhhkkkhhhhkkkhhfffffffffbgg.",
+            "ccfffffiiiiiiiiikkkkkkkkhhhfffffffffbgg.",
+            ".aaffiiiiiiiiiiiiikkkkiiiiiiiiiffffbgg..",
             ".aafiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibgg...",
             "..ggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbgg...",
             "...ggggggggggggggjjjgggggggggggggggg....",
@@ -363,6 +379,10 @@ class ScoreCPlus:
                     x0 = x_start + x * 2
                     y0 = y_start + y * 2
                     draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (90, 90, 90))
+                if pixel == "k":
+                    x0 = x_start + x * 2
+                    y0 = y_start + y * 2
+                    draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (230, 230, 230))
 
 
 class ScoreC:
@@ -373,18 +393,18 @@ class ScoreC:
             "...aaaaaabcccccccccccccccccccccccd......",
             "..caaaaaabcccccccccccccccccccccccdd.....",
             ".ccceeeeeebfffffffffffffeeeeeeeeebddd...",
-            "ccceeeeeeeebffffffbbbbfeeeeeeeeeeebddd..",
-            "aceeeeeeeeeeefffbbbbbbbbeeeeeeeeeeebdg..",
-            "aaeeeeeeeeeeeefbbffffeebbeeeeeeeeeebgg..",
-            ".aaeeeeeeeeeeeebbfffeeebbeeeeeeeeeebgg..",
-            ".aaeeeeeeeeeffbbfffefeeeeeeeeeeeeeffbgg.",
-            ".aaeeeeeeeffffbbfeffffeeeeeeeeeeffffbgg.",
-            "..aaeeeeffffffbbfffffffeeeeeeeffffffbgg.",
-            "..aaceefffffffbbfffffffffeeeefffffffbgg.",
-            "..ccfffffffhhhhbbhhhfffbbeefffffffffbgg.",
-            ".ccffffffhhhhhhbbhhhhhhbbhhfffffffffbgg.",
-            "ccfffffiiiiiiiiibbbbbbbbhhhfffffffffbgg.",
-            ".aaffiiiiiiiiiiiiibbbbiiiiiiiiiffffbgg..",
+            "ccceeeeeeeebffffffkkkkfeeeeeeeeeeebddd..",
+            "aceeeeeeeeeeefffkkkkkkkkeeeeeeeeeeebdg..",
+            "aaeeeeeeeeeeeefkkkfffekkkeeeeeeeeeebgg..",
+            ".aaeeeeeeeeeeeekkfffeeekkeeeeeeeeeebgg..",
+            ".aaeeeeeeeeeffkkfffefeeeeeeeeeeeeeffbgg.",
+            ".aaeeeeeeeffffkkfeffffeeeeeeeeeeffffbgg.",
+            "..aaeeeeffffffkkfffffffeeeeeeeffffffbgg.",
+            "..aaceefffffffkkfffffffffeeeefffffffbgg.",
+            "..ccfffffffhhhhkkhhhfffkkeefffffffffbgg.",
+            ".ccffffffhhhhhhkkkhhhhkkkhhfffffffffbgg.",
+            "ccfffffiiiiiiiiikkkkkkkkhhhfffffffffbgg.",
+            ".aaffiiiiiiiiiiiiikkkkiiiiiiiiiffffbgg..",
             ".aafiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibgg...",
             "..ggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbgg...",
             "...ggggggggggggggjjjgggggggggggggggg....",
@@ -436,3 +456,7 @@ class ScoreC:
                     x0 = x_start + x * 2
                     y0 = y_start + y * 2
                     draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (90, 90, 90))
+                if pixel == "k":
+                    x0 = x_start + x * 2
+                    y0 = y_start + y * 2
+                    draw_tool.rectangle([x0, y0, x0 + 2, y0 + 2], fill = (230, 230, 230))

@@ -25,7 +25,7 @@ class Term1_1:
                 if pixel == "d":
                     x0 = x_start + x * self.size
                     y0 = y_start + y * self.size
-                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (100, 100, 100))
+                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (0, 0, 0))
 
 
 class Term1_2:
@@ -53,7 +53,7 @@ class Term1_2:
                 if pixel == "d":
                     x0 = x_start + x * self.size
                     y0 = y_start + y * self.size
-                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (100, 100, 100))
+                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (0, 0, 0))
 
 
 class Term2_1:
@@ -81,7 +81,7 @@ class Term2_1:
                 if pixel == "d":
                     x0 = x_start + x * self.size
                     y0 = y_start + y * self.size
-                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (100, 100, 100))
+                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (0, 0, 0))
 
 
 class Term2_2:
@@ -109,7 +109,7 @@ class Term2_2:
                 if pixel == "d":
                     x0 = x_start + x * self.size
                     y0 = y_start + y * self.size
-                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (100, 100, 100))
+                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (0, 0, 0))
 
 
 class Term3_1:
@@ -137,7 +137,7 @@ class Term3_1:
                 if pixel == "d":
                     x0 = x_start + x * self.size
                     y0 = y_start + y * self.size
-                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (100, 100, 100))
+                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (0, 0, 0))
 
 
 class Term3_2:
@@ -165,7 +165,7 @@ class Term3_2:
                 if pixel == "d":
                     x0 = x_start + x * self.size
                     y0 = y_start + y * self.size
-                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (100, 100, 100))
+                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (0, 0, 0))
 
 
 class Term4_1:
@@ -193,7 +193,7 @@ class Term4_1:
                 if pixel == "d":
                     x0 = x_start + x * self.size
                     y0 = y_start + y * self.size
-                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (100, 100, 100))
+                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (0, 0, 0))
 
 
 class Term4_2:
@@ -221,4 +221,4 @@ class Term4_2:
                 if pixel == "d":
                     x0 = x_start + x * self.size
                     y0 = y_start + y * self.size
-                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (100, 100, 100))
+                    draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (0, 0, 0))

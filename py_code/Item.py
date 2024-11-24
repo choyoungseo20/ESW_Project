@@ -51,7 +51,7 @@ class GreatNote:
         collision = self.overlap(self.center, user.center)
             
         if collision:
-            self.state = 'die'
+            self.state = 'use'
 
     def overlap(self, ego_position, other_position):
         '''
@@ -122,7 +122,7 @@ class PastExam:
         collision = self.overlap(self.center, user.center)
             
         if collision:
-            self.state = 'die'
+            self.state = 'use'
 
     def overlap(self, ego_position, other_position):
         '''

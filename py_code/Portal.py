@@ -29,6 +29,6 @@ class Portal:
         #     return False  # 겹치지 않음
         # return True  # 겹침
 
-        if (ego_position[0] - other_position[0])**2 + (ego_position[1] - other_position[1])**2 >= (12 + 12)**2:
+        if (ego_position[0] - other_position[0])**2 + (ego_position[1] - other_position[1])**2 >= (12 + 14)**2:
             return False  # 겹치지 않음
         return True  # 겹침

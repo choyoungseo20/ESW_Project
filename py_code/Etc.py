@@ -9,16 +9,16 @@ class GameStart:
             "..caaaaaabcccccccccccccccccccccccdd.....",
             ".ccceeeeeebfffffffffffffeeeeeeeeebddd...",
             "ccceeeeeeeebfffffffffffeeeeeeeeeeebddd..",
-            "aceeeebbbeeeebbbbbfffbbbbbeeeeebeeebdg..",
-            "aaeeebeeebeeebfffffffeeeebeeeebebeebgg..",
-            ".aaeebeeebeeebefffffeeeeebeeeebebeebgg..",
-            ".aaeeebbbeeefbbbbbfefeeeebeeebeeebffbgg.",
-            ".aaeeeeeeefffffffeffffeeebeeebeefbffbgg.",
-            "..aabbbbbbbfbbbbbbbffffbeeeeeeffffffbgg.",
-            "..aaceefffffffebfffffffbeeeebbbbbbbfbgg.",
-            "..ccfbfffffhhbhbhhhhfffbfeeffffbffffbgg.",
-            ".ccffbfffhhhhbhhhhhhhhhbhhhffffbffffbgg.",
-            "ccfffbbbbbiiibbbbbhhbbbbbbbffffbffffbgg.",
+            "aceeeekkkeeeekkkkkfffkkkkkeeeeekeeebdg..",
+            "aaeeekeeekeeekfffffffeeeekeeeekekeebgg..",
+            ".aaeekeeekeeekefffffeeeeekeeeekekeebgg..",
+            ".aaeeekkkeeefkkkkkfefeeeekeeekeeekffbgg.",
+            ".aaeeeeeeefffffffeffffeeekeeekeefkffbgg.",
+            "..aakkkkkkkfkkkkkkkffffkeeeeeeffffffbgg.",
+            "..aaceefffffffekfffffffkeeeekkkkkkkfbgg.",
+            "..ccfkfffffhhkhkhhhhfffkfeeffffkffffbgg.",
+            ".ccffkfffhhhhkhhhhhhhhhkhhhffffkffffbgg.",
+            "ccfffkkkkkiiikkkkkhhkkkkkkkffffkffffbgg.",
             ".aaffiiiiiiiiiiiiiiiiiiiiiiiiiiffffbgg..",
             ".aafiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibgg...",
             "..ggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbgg...",
@@ -71,6 +71,10 @@ class GameStart:
                     x0 = x_start + x * 6
                     y0 = y_start + y * 4
                     draw_tool.rectangle([x0, y0, x0 + 6, y0 + 4], fill = (90, 90, 90))
+                if pixel == "k":
+                    x0 = x_start + x * 6
+                    y0 = y_start + y * 4
+                    draw_tool.rectangle([x0, y0, x0 + 6, y0 + 4], fill = (230, 230, 230))
 
 
 class InfoCharacter:
@@ -171,16 +175,16 @@ class GameEnd1:
             "..caaaaaabcccccccccccccccccccccccdd.....",
             ".ccceeeeeebfffffffffffffeeeeeeeeebddd...",
             "ccceeeeeeeebfffffffffffeeeeeeeeeeebddd..",
-            "aceeebbbeebeefffbbbbbfebbbeebbbbeeebdg..",
-            "aaeebeeebebeeeffbffffebeeebebeeebeebgg..",
-            ".aaebeeebebeeeefbfffeebeeebebeeebeebgg..",
-            ".aaebeeebebeffffbffefebeeebebeeebeffbgg.",
-            ".aaebeeeeebfffffbbbbbfbbbbbebbbbbfffbgg.",
-            "..aabeeeffbffffebfffffbeeebebbeeffffbgg.",
-            "..aabeefbfbfffefbfffffbfeebebfbfffffbgg.",
-            "..ccbfffbfbhhhhhbhhhffbffebfbffbffffbgg.",
-            ".ccfbfffbhbhhhhhbhhhhhbhhhbfbfffbfffbgg.",
-            "ccfffbbbiibbbbbibbbbbhbhhhbfbfffbfffbgg.",
+            "aceeekkkeekeefffkkkkkfekkkeekkkkeeebdg..",
+            "aaeekeeekekeeeffkffffekeeekekeeekeebgg..",
+            ".aaekeeekekeeeefkfffeekeeekekeeekeebgg..",
+            ".aaekeeekekeffffkffefekeeekekeeekeffbgg.",
+            ".aaekeeeeekfffffkkkkkfkkkkkekkkkkfffbgg.",
+            "..aakeeeffkffffekfffffkeeekekkeeffffbgg.",
+            "..aakeefkfkfffefkfffffkfeekekfkfffffbgg.",
+            "..cckfffkfkhhhhhkhhhffkffekfkffkffffbgg.",
+            ".ccfkfffkhkhhhhhkhhhhhkhhhkfkfffkfffbgg.",
+            "ccfffkkkiikkkkkikkkkkhkhhhkfkfffkfffbgg.",
             ".aaffiiiiiiiiiiiiiiiiiiiiiiiiiiffffbgg..",
             ".aafiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibgg...",
             "..ggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbgg...",
@@ -233,6 +237,10 @@ class GameEnd1:
                     x0 = x_start + x * 6
                     y0 = y_start + y * 4
                     draw_tool.rectangle([x0, y0, x0 + 6, y0 + 4], fill = (90, 90, 90))
+                if pixel == "k":
+                    x0 = x_start + x * 6
+                    y0 = y_start + y * 4
+                    draw_tool.rectangle([x0, y0, x0 + 6, y0 + 4], fill = (230, 230, 230))
 
 
 class GameEnd2:
@@ -244,16 +252,16 @@ class GameEnd2:
             "..caaaaaabcccccccccccccccccccccccdd.....",
             ".ccceeeeeebfffffffffffffeeeeeeeeebddd...",
             "ccceeeeeeeebfffffffffffeeeeeeeeeeebddd..",
-            "aceebbbbeebbbbbfbbbbbfbbbbeebeeebeebdg..",
-            "aaeebeeebebeeeffffbffebeeebebeeebeebgg..",
-            ".aaebeeebebeeeefffbfeebeeebebeeebeebgg..",
-            ".aaebeeebebeffffffbefebeeebebeeebeffbgg.",
-            ".aaebbbbeebbbbbffebfffbbbbeeebbbffffbgg.",
-            "..aabbeeffbffffeffbfffbbeeeeeebfffffbgg.",
-            "..aabebfffbfffefffbfffbfbeeeefbfffffbgg.",
-            "..ccbffbffbhhhhhhhbhffbffbefffbfffffbgg.",
-            ".ccfbfffbhbhhhhhhhbhhhbhhhbfffbfffffbgg.",
-            "ccffbffibibbbbbiihbhhhbhhhbfffbfffffbgg.",
+            "aceekkkkeekkkkkfkkkkkfkkkkeekeeekeebdg..",
+            "aaeekeeekekeeeffffkffekeeekekeeekeebgg..",
+            ".aaekeeekekeeeefffkfeekeeekekeeekeebgg..",
+            ".aaekeeekekeffffffkefekeeekekeeekeffbgg.",
+            ".aaekkkkeekkkkkffekfffkkkkeeekkkffffbgg.",
+            "..aakkeeffkffffeffkfffkkeeeeeekfffffbgg.",
+            "..aakekfffkfffefffkfffkfkeeeefkfffffbgg.",
+            "..cckffkffkhhhhhhhkhffkffkefffkfffffbgg.",
+            ".ccfkfffkhkhhhhhhhkhhhkhhhkfffkfffffbgg.",
+            "ccffkffikikkkkkiihkhhhkhhhkfffkfffffbgg.",
             ".aaffiiiiiiiiiiiiiiiiiiiiiiiiiiffffbgg..",
             ".aafiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibgg...",
             "..ggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbgg...",
@@ -306,6 +314,10 @@ class GameEnd2:
                     x0 = x_start + x * 6
                     y0 = y_start + y * 4
                     draw_tool.rectangle([x0, y0, x0 + 6, y0 + 4], fill = (90, 90, 90))
+                if pixel == "k":
+                    x0 = x_start + x * 6
+                    y0 = y_start + y * 4
+                    draw_tool.rectangle([x0, y0, x0 + 6, y0 + 4], fill = (230, 230, 230))
 
 
 class EndingCharacter1:
@@ -456,6 +468,123 @@ class EndingCharacter2:
                     x0 = x_start + x * self.size
                     y0 = y_start + y * self.size
                     draw_tool.rectangle([x0, y0, x0 + self.size, y0 + self.size], fill = (83, 176, 231))
+
+
+class GameScore:
+    def __init__(self):
+        self.pixel_map1 = [
+            ".....kk.......kk..",
+            ".....kk.......kk..",
+            "....kkkk....kkkkkk",
+            "....kkkk....kkkkkk",
+            "...kk..kk.....kk..",
+            "...kk..kk.....kk..",
+            "..kk....kk........",
+            "..kkkkkkkk........",
+            ".kkkkkkkkkk.......",
+            ".kk......kk.......",
+            "kk........kk......",
+            "kk........kk......",
+        ]
+        self.pixel_map2 = [
+            ".....kk.....",
+            ".....kk.....",
+            "....kkkk....",
+            "....kkkk....",
+            "...kk..kk...",
+            "...kk..kk...",
+            "..kk....kk..",
+            "..kkkkkkkk..",
+            ".kkkkkkkkkk.",
+            ".kk......kk.",
+            "kk........kk",
+            "kk........kk",
+        ]
+        self.pixel_map3 = [
+            "..kkkkkk......kk..",
+            "..kkkkkkk.....kk..",
+            "..kk....kk..kkkkkk",
+            "..kk....kk..kkkkkk",
+            "..kk....kk....kk..",
+            "..kkkkkkk.....kk..",
+            "..kkkkkkk.........",
+            "..kk....kk........",
+            "..kk....kk........",
+            "..kk....kk........",
+            "..kkkkkkk.........",
+            "..kkkkkk..........",
+        ]
+        self.pixel_map4 = [
+            "..kkkkkk....",
+            "..kkkkkkk...",
+            "..kk....kk..",
+            "..kk....kk..",
+            "..kk....kk..",
+            "..kkkkkkk...",
+            "..kkkkkkk...",
+            "..kk....kk..",
+            "..kk....kk..",
+            "..kk....kk..",
+            "..kkkkkkk...",
+            "..kkkkkk....",
+        ]
+        self.pixel_map5 = [
+            "....kkkk......kk..",
+            "..kkkkkkkk....kk..",
+            ".kkk....kkk.kkkkkk",
+            ".kk......kk.kkkkkk",
+            "kk............kk..",
+            "kk............kk..",
+            "kk................",
+            "kk................",
+            ".kk......kk.......",
+            ".kkk....kkk.......",
+            "..kkkkkkkk........",
+            "....kkkk..........",
+        ]
+        self.pixel_map6 = [
+            "....kkkk....",
+            "..kkkkkkkk..",
+            ".kkk....kkk.",
+            ".kk......kk.",
+            "kk..........",
+            "kk..........",
+            "kk..........",
+            "kk..........",
+            ".kk......kk.",
+            ".kkk....kkk.",
+            "..kkkkkkkk..",
+            "....kkkk....",
+        ]
+
+    
+    def draw(self, grade, draw_tool):
+        if grade % 2 == 0:
+            x_start = 84
+            y_start = 140
+        else:
+            x_start = 96
+            y_start = 140
+
+        if grade == 0:
+            pixel_map = self.pixel_map1
+        if grade == 1:
+            pixel_map = self.pixel_map2
+        if grade == 2:
+            pixel_map = self.pixel_map3
+        if grade == 3:
+            pixel_map = self.pixel_map4
+        if grade == 4:
+            pixel_map = self.pixel_map5
+        if grade == 5:
+            pixel_map = self.pixel_map6
+    
+        for y, row in enumerate(pixel_map):
+            for x, pixel in enumerate(row):
+                if pixel == "k":
+                    x0 = x_start + x * 4
+                    y0 = y_start + y * 4
+                    draw_tool.rectangle([x0, y0, x0 + 4, y0 + 4], fill = (255, 0, 0))
 
 
 class Stone:

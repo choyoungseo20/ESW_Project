@@ -18,8 +18,10 @@ from Etc import GameEnd1
 from Etc import GameEnd2
 from Etc import EndingCharacter1
 from Etc import EndingCharacter2
+from Etc import GameScore
 from Etc import Stone
 from Exam import Exam
+from FinalExam import FinalExam
 from Item import GreatNote
 from Item import PastExam
 from Joystick import Joystick
@@ -49,6 +51,7 @@ def main():
     info_character = InfoCharacter()
     my_character = Character(joystick.width, joystick.height)
     exam = Exam()
+    finalExam = FinalExam()
     greateNote = GreatNote()
     pastExam = PastExam()
     portal = Portal()
@@ -117,10 +120,14 @@ def main():
         joystick.disp.image(my_image)
 
     arrows = []
-    last_time = time.time()
+    last_time1 = time.time()
+    last_time2 = time.time()
+    last_time3 = time.time()
     exam_time = time.time()
     item1_time = time.time()
+    item1_active_time = None
     item2_time = time.time()
+    item2_active_time = None
     portal_time = time.time()
     stage_flag = [False, False, False, False, False, False, False, False, False]
     i = 0
@@ -165,12 +172,17 @@ def main():
             joystick.disp.image(my_image)
 
             my_character.reset(joystick.width, joystick.height)
-            last_time = time.time()
+            last_time1 = time.time()
+            last_time2 = time.time()
+            last_time3 = time.time()
             exam_time = time.time()
             item1_time = time.time()
+            item1_active_time = None
             item2_time = time.time()
+            item2_active_time = None
             portal_time = time.time()
             exam.state = None
+            finalExam.state = None
             greateNote.state = None
             pastExam.state = None
             portal.state = None
@@ -182,60 +194,101 @@ def main():
             stage_flag[my_character.term - 1] = True
 
 
+        if my_character.term >= 1:
+            current_time = time.time()  # 현재 시간
+            if current_time - last_time1 >= 1:  # 1초가 경과하면
+                random_number = random.randint(0, 19)
+                for j in range(1):  # n번 반복
+                    offset = 10 * j  # 각 화살의 offset
+                    arrow = assignmentArrows[i]
+                    start_position = assignments[(random_number + offset) % 20].position
+                    assignmentArrows[i].run(start_position, my_character.center)
+                    i = (i + 1) % 25
+                    arrows.append(arrow)
+                last_time1 = current_time
+
+        if my_character.term >= 5:
+            current_time = time.time()  # 현재 시간
+            if current_time - last_time2 >= 2:  # 2초가 경과하면
+                random_number = random.randint(0, 19)
+                for j in range(3):  # 3번 반복
+                    offset = 10 * j  # 각 화살의 offset
+                    arrow = assignmentArrows[i]
+                    start_position = assignments[(random_number + offset) % 20].position
+                    assignmentArrows[i].run(start_position, my_character.center)
+                    i = (i + 1) % 25
+                    arrows.append(arrow)
+                last_time2 = current_time
+
+        if my_character.term >= 7:
+            current_time = time.time()  # 현재 시간
+            if current_time - last_time3 >= 5:  # 5초가 경과하면
+                random_number = random.randint(0, 19)
+                for j in range(3):  # 4번 반복
+                    offset = 8 * j  # 각 화살의 offset
+                    arrow = assignmentArrows[i]
+                    start_position = assignments[(random_number + offset) % 20].position
+                    assignmentArrows[i].run(start_position, my_character.center)
+                    i = (i + 1) % 25
+                    arrows.append(arrow)
+                last_time3 = current_time
+
+        if my_character.term >= 3:
+            current_time = time.time()  # 현재 시간
+            if current_time - exam_time >= 15 and exam.state != 'alive':  # 30초가 경과하면
+                random_number = random.randint(0, 3)
+                if random_number == 0:
+                    exam.run(0, 0, 3)
+                elif random_number == 1:
+                    exam.run(0, 224, 3)
+                elif random_number == 2:
+                    exam.run(224, 0, 3)
+                else:
+                    exam.run(224, 224, 3)
+                
+                exam_time = current_time
+
+        if my_character.term == 8:
+            if finalExam.state != 'alive':
+                finalExam.run(224, 224, 4)
+
+        if my_character.term >= 1:
+            current_time = time.time()  # 현재 시간
+            if current_time - item1_time >= 15: # 30초가 경과하면
+                if greateNote.state == 'alive' or greateNote.state == 'use':
+                    item1_time = current_time
+                else:
+                    random_number1 = random.randint(0, 214)
+                    random_number2 = random.randint(40, 214)
+                    greateNote.run(random_number1, random_number2)
+                
+                    item1_time = current_time
+
+        if my_character.term >= 3:
+            current_time = time.time()  # 현재 시간
+            if current_time - item2_time >= 25: # 30초가 경과하면
+                if pastExam.state == 'alive' or pastExam.state == 'use':
+                    item2_time = current_time
+                else:
+                    random_number1 = random.randint(80, 214)
+                    random_number2 = random.randint(0, 214)
+                    pastExam.run(random_number1, random_number2)
+                
+                    item2_time = current_time
+
+        
 
         current_time = time.time()  # 현재 시간
-        if current_time - last_time >= 1:  # 1초가 경과하면
-            random_number = random.randint(0, 19)
-            for j in range(1):  # n번 반복
-                offset = 10 * j  # 각 화살의 offset
-                arrow = assignmentArrows[i]
-                start_position = assignments[(random_number + offset) % 20].position
-                assignmentArrows[i].run(start_position, my_character.center)
-                i = (i + 1) % 25
-                arrows.append(arrow)
-            last_time = current_time
-
-        current_time = time.time()  # 현재 시간
-        if current_time - exam_time >= 30 and exam.state != 'alive':  # 30초가 경과하면
+        if current_time - portal_time >= 10 and portal.state != 'alive':  # 30초가 경과하면
             random_number = random.randint(0, 3)
             if random_number == 0:
-                exam.run(0, 0, 3)
+                portal.run(20, 60)
             elif random_number == 1:
-                exam.run(0, 224, 3)
+                portal.run(20, 220)
             elif random_number == 2:
-                exam.run(224, 0, 3)
+                portal.run(220, 20)
             else:
-                exam.run(224, 224, 3)
-            
-            exam_time = current_time
-
-        current_time = time.time()  # 현재 시간
-        if current_time - item1_time >= 3 and greateNote.state != 'alive':  # 30초가 경과하면
-            random_number1 = random.randint(0, 214)
-            random_number2 = random.randint(40, 214)
-            greateNote.run(random_number1, random_number2)
-            
-            item1_time = current_time
-
-        current_time = time.time()  # 현재 시간
-        if current_time - item2_time >= 3 and pastExam.state != 'alive':  # 30초가 경과하면
-            random_number1 = random.randint(80, 214)
-            random_number2 = random.randint(0, 214)
-            pastExam.run(random_number1, random_number2)
-            
-            item2_time = current_time
-
-        current_time = time.time()  # 현재 시간
-        if current_time - portal_time >= 3 and portal.state != 'alive':  # 30초가 경과하면
-            random_number = random.randint(0, 3)
-            if random_number == 0:
-                portal.run(12, 52)
-            elif random_number == 1:
-                portal.run(12, 228)
-            elif random_number == 2:
-                portal.run(228, 12)
-            else:
-                portal.run(228, 228)
+                portal.run(220, 220)
             
             
             portal_time = current_time
@@ -249,20 +302,62 @@ def main():
         if exam.state == 'alive':
             exam.move(my_character.center)
             exam.collision_check(my_character)
+            if exam.state == 'die' and pastExam.state == 'use':
+                pastExam.state = 'die'
+
+        if finalExam.state == 'alive':
+            finalExam.move(my_character.center)
+            finalExam.collision_check(my_character)
+            if finalExam.state == 'die' and pastExam.state == 'use':
+                pastExam.state = 'die'
 
         for assignmentArrow in arrows:
             if assignmentArrow.state == 'alive':
                 assignmentArrow.move()
                 assignmentArrow.collision_check(my_character)
+                if assignmentArrow.state == 'die' and pastExam.state == 'use':
+                    pastExam.state = 'die'
 
         arrows = [assignmentArrow for assignmentArrow in arrows if 0 <= assignmentArrow.position[0] <= 240 and 0 <= assignmentArrow.position[1] <= 240 and assignmentArrow.state == 'alive']
 
 
         if greateNote.state == 'alive':
-            greateNote.collision_check(my_character)    
+            greateNote.collision_check(my_character)
+            if greateNote.state == 'use':
+                item1_active_time = time.time()
+
+        current_time = time.time()
+        if greateNote.state == 'use':
+            if current_time - item1_active_time >= 5:
+                greateNote.state = 'die'
+            else:
+                for assignmentArrow in arrows:
+                    assignmentArrow.item1 = True
+
+        if greateNote.state == 'die':
+            for assignmentArrow in arrows:
+                assignmentArrow.item1 = False
+            item1_active_time = None
+            greateNote.state = None
+            
 
         if pastExam.state == 'alive':
-            pastExam.collision_check(my_character)    
+            pastExam.collision_check(my_character)
+            if pastExam.state == 'use':
+                item2_active_time = time.time()
+
+        current_time = time.time()
+        if pastExam.state == 'use':
+            if current_time - item2_active_time >= 5:
+                pastExam.state = 'die'
+            else:
+                exam.item2 = True
+
+        if pastExam.state == 'die':
+            exam.item2 = False
+            item2_active_time = None
+            pastExam.state = None
+            
 
         if portal.state == 'alive':
             portal.collision_check(my_character)
@@ -281,7 +376,11 @@ def main():
         if portal.state != 'die':
             terms[my_character.term - 1].draw(my_draw)
 
-        if my_character.grade < 6:    
+        if my_character.grade < 6:
+            if greateNote.state == 'use':
+                my_draw.ellipse((my_character.center[0] - 16, my_character.center[1] - 16, my_character.center[0] + 16, my_character.center[1] + 16), outline = (255, 242, 0), width = 2)
+            if pastExam.state == 'use':
+                my_draw.ellipse((my_character.center[0] - 16, my_character.center[1] - 16, my_character.center[0] + 16, my_character.center[1] + 16), outline = (255, 0, 0), width = 2)
             my_character.draw(my_draw)
         else:
             clear = False
@@ -293,13 +392,16 @@ def main():
             pastExam.draw(my_draw)
 
         if portal.state == 'alive':
-            my_draw.ellipse((portal.position[0] - 15, portal.position[1] - 15, portal.position[0] + 15, portal.position[1] + 15), fill = (137, 47, 255))
-            my_draw.ellipse((portal.position[0] - 10, portal.position[1] - 10, portal.position[0] + 10, portal.position[1] + 10), fill = (73, 157, 225))
-            my_draw.ellipse((portal.position[0] - 5, portal.position[1] - 5, portal.position[0] + 5, portal.position[1] + 5), fill = (255, 255, 255))
+            my_draw.ellipse((portal.position[0] - 18, portal.position[1] - 18, portal.position[0] + 18, portal.position[1] + 18), outline = (35, 73, 165), width = 3)
+            my_draw.ellipse((portal.position[0] - 16, portal.position[1] - 16, portal.position[0] + 16, portal.position[1] + 16), outline = (255, 255, 255), width = 2)
+            my_draw.ellipse((portal.position[0] - 14, portal.position[1] - 14, portal.position[0] + 14, portal.position[1] + 14), outline = (23, 221, 233), width = 3)
+            my_draw.ellipse((portal.position[0] - 11, portal.position[1] - 11, portal.position[0] + 11, portal.position[1] + 11), fill = (0, 0, 0))
 
         if exam.state == 'alive':
-            my_draw.ellipse((exam.center[0] - 18, exam.center[1] - 18, exam.center[0] + 18, exam.center[1] + 18), fill = (255, 255, 255))
             exam.draw(my_draw)
+
+        if finalExam.state == 'alive':
+            finalExam.draw(my_draw)
 
         for assignmentArrow in arrows:
             my_draw.ellipse((assignmentArrow.position[0] - 3, assignmentArrow.position[1] - 3, assignmentArrow.position[0] + 3, assignmentArrow.position[1] + 3), fill = (255, 0, 0))
@@ -332,18 +434,24 @@ def main():
 
             if not joystick.button_A.value:
                 my_character.retry(joystick.width, joystick.height)
-                last_time = time.time()
+                last_time1 = time.time()
+                last_time2 = time.time()
+                last_time3 = time.time()
                 exam_time = time.time()
                 item1_time = time.time()
+                item1_active_time = None
                 item2_time = time.time()
+                item2_active_time = None
                 portal_time = time.time()
                 exam.state = None
+                finalExam.state = None
                 greateNote.state = None
                 pastExam.state = None
                 portal.state = None
                 for assignmentArrow in arrows:
                     assignmentArrow.state = None
                 arrows = []
+                stage_flag = [False, False, False, False, False, False, False, False, False]
                 i = 0
                 clear = True
 
@@ -351,6 +459,7 @@ def main():
         stone = Stone()
         gameEnd1 = GameEnd1()
         ec1 = EndingCharacter1()
+        gameScore = GameScore()
 
         my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
         for d1 in dots1:
@@ -436,9 +545,12 @@ def main():
         ec1.draw(my_draw)
         gameEnd1.draw(my_draw)
 
+
+        my_draw.ellipse((75, 119, 175, 219), fill = (210, 210, 210))
+        my_draw.ellipse((70, 114, 170, 214), fill = (255, 255, 255))
+        gameScore.draw(my_character.grade, my_draw)
+
         joystick.disp.image(my_image)
-
-
 
     
     
