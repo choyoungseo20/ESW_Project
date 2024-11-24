@@ -561,10 +561,10 @@ class GameScore:
     def draw(self, grade, draw_tool):
         if grade % 2 == 0:
             x_start = 84
-            y_start = 140
+            y_start = 160
         else:
             x_start = 96
-            y_start = 140
+            y_start = 160
 
         if grade == 0:
             pixel_map = self.pixel_map1
@@ -585,6 +585,39 @@ class GameScore:
                     x0 = x_start + x * 4
                     y0 = y_start + y * 4
                     draw_tool.rectangle([x0, y0, x0 + 4, y0 + 4], fill = (255, 0, 0))
+
+class GameScoreBoard:
+    def __init__(self):
+        self.position = np.array([55, 105])
+        self.pixel_map = [
+            ".bbbbbbbb....",
+            "bwwwwwwbwb...",
+            "bwwwwwwbwwb..",
+            "bwwwwwwbwwwb.",
+            "bwwwwwwbbbbbb",
+            "bwwwwwwwwwwwb",
+            "bwwwwwwwwwwwb",
+            "bwwwwwwwwwwwb",
+            "bwwwwwwwwwwwb",
+            "bwwwwwwwwwwwb",
+            "bwwwwwwwwwwwb",
+            "bwwwwwwwwwwwb",
+            ".bbbbbbbbbbb.",
+            ]
+
+    def draw(self, draw_tool):
+        x_start, y_start = self.position
+        for y, row in enumerate(self.pixel_map):
+            for x, pixel in enumerate(row):
+                if pixel == "b":
+                    x0 = x_start + x * 10
+                    y0 = y_start + y * 10
+                    draw_tool.rectangle([x0, y0, x0 + 10, y0 + 10], fill = (50, 50, 50))
+                if pixel == "w":
+                    x0 = x_start + x * 10
+                    y0 = y_start + y * 10
+                    draw_tool.rectangle([x0, y0, x0 + 10, y0 + 10], fill = (255, 255, 255))
+    
 
 
 class Stone:

@@ -19,6 +19,7 @@ from Etc import GameEnd2
 from Etc import EndingCharacter1
 from Etc import EndingCharacter2
 from Etc import GameScore
+from Etc import GameScoreBoard
 from Etc import Stone
 from Exam import Exam
 from FinalExam import FinalExam
@@ -465,6 +466,7 @@ def main():
         gameEnd1 = GameEnd1()
         ec1 = EndingCharacter1()
         gameScore = GameScore()
+        gameScoreBoard = GameScoreBoard()
 
         my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (255, 250, 250))
         for d1 in dots1:
@@ -551,8 +553,9 @@ def main():
         gameEnd1.draw(my_draw)
 
 
-        my_draw.ellipse((75, 119, 175, 219), fill = (210, 210, 210))
-        my_draw.ellipse((70, 114, 170, 214), fill = (255, 255, 255))
+        # my_draw.ellipse((75, 119, 175, 219), fill = (102, 204, 255))
+        # my_draw.ellipse((70, 114, 170, 214), fill = (179, 230, 255))
+        gameScoreBoard.draw(my_draw)
         gameScore.draw(my_character.grade, my_draw)
 
         joystick.disp.image(my_image)
