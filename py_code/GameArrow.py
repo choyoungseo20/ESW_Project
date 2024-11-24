@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-class AssignmentArrow:
+class GameArrow:
     def __init__(self):
         self.state = None
         self.item1 = None
