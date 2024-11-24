@@ -4,8 +4,6 @@ import random
 import numpy as np
 from colorsys import hsv_to_rgb
 
-from Assignment import Assignment
-from AssignmentArrow import AssignmentArrow
 from Character import Character
 from Background import Dot1
 from Background import Dot2
@@ -26,6 +24,8 @@ from FinalExam import FinalExam
 from Item import GreatNote
 from Item import PastExam
 from Joystick import Joystick
+from Game import Game
+from GameArrow import GameArrow
 from Portal import Portal
 from Score import ScoreAPlus
 from Score import ScoreA
@@ -79,18 +79,18 @@ def main():
     grass = [
         Grass(25, 120), Grass(70, 30), Grass(100, 200), Grass(150, 120),Grass(190, 10)
         ]
-    assignments = [
-        Assignment(0, 0), Assignment(30, 0), Assignment(90, 0), Assignment(150, 0), Assignment(210, 0), 
-        Assignment(240, 0), Assignment(240, 30), Assignment(240, 90), Assignment(240, 150), Assignment(240, 210),
-        Assignment(240, 240), Assignment(210, 240), Assignment(150, 240), Assignment(90, 240), Assignment(30, 240), 
-        Assignment(0, 240), Assignment(0, 210), Assignment(0, 150), Assignment(0, 90), Assignment(0, 30), 
+    games = [
+        Game(0, 0), Game(30, 0), Game(90, 0), Game(150, 0), Game(210, 0), 
+        Game(240, 0), Game(240, 30), Game(240, 90), Game(240, 150), Game(240, 210),
+        Game(240, 240), Game(210, 240), Game(150, 240), Game(90, 240), Game(30, 240), 
+        Game(0, 240), Game(0, 210), Game(0, 150), Game(0, 90), Game(0, 30), 
         ]
-    assignmentArrows = [
-        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
-        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
-        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), 
-        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(),   
-        AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(), AssignmentArrow(),
+    gameArrows = [
+        GameArrow(), GameArrow(), GameArrow(), GameArrow(), GameArrow(), 
+        GameArrow(), GameArrow(), GameArrow(), GameArrow(), GameArrow(), 
+        GameArrow(), GameArrow(), GameArrow(), GameArrow(), GameArrow(), 
+        GameArrow(), GameArrow(), GameArrow(), GameArrow(), GameArrow(),   
+        GameArrow(), GameArrow(), GameArrow(), GameArrow(), GameArrow(),
         ]
     score = [
         ScoreAPlus(), ScoreA(), ScoreBPlus(), ScoreB(), ScoreCPlus(), ScoreC(), 
@@ -193,8 +193,8 @@ def main():
             greateNote.state = None
             pastExam.state = None
             portal.state = None
-            for assignmentArrow in arrows:
-                assignmentArrow.state = None
+            for gameArrow in arrows:
+                gameArrow.state = None
             arrows = []
             i = 0
 
@@ -205,11 +205,11 @@ def main():
             current_time = time.time()  # 현재 시간
             if current_time - last_time1 >= 1:  # 1초가 경과하면
                 random_number = random.randint(0, 19)
-                for j in range(1):  # n번 반복
+                for j in range(1):  # 1번 반복
                     offset = 10 * j  # 각 화살의 offset
-                    arrow = assignmentArrows[i]
-                    start_position = assignments[(random_number + offset) % 20].position
-                    assignmentArrows[i].run(start_position, my_character.center)
+                    arrow = gameArrows[i]
+                    start_position = games[(random_number + offset) % 20].position
+                    gameArrows[i].run(start_position, my_character.center)
                     i = (i + 1) % 25
                     arrows.append(arrow)
                 last_time1 = current_time
@@ -219,10 +219,10 @@ def main():
             if current_time - last_time2 >= 2:  # 2초가 경과하면
                 random_number = random.randint(0, 19)
                 for j in range(3):  # 3번 반복
-                    offset = 10 * j  # 각 화살의 offset
-                    arrow = assignmentArrows[i]
-                    start_position = assignments[(random_number + offset) % 20].position
-                    assignmentArrows[i].run(start_position, my_character.center)
+                    offset = 7 * j  # 각 화살의 offset
+                    arrow = gameArrows[i]
+                    start_position = games[(random_number + offset) % 20].position
+                    gameArrows[i].run(start_position, my_character.center)
                     i = (i + 1) % 25
                     arrows.append(arrow)
                 last_time2 = current_time
@@ -233,9 +233,9 @@ def main():
                 random_number = random.randint(0, 19)
                 for j in range(3):  # 4번 반복
                     offset = 8 * j  # 각 화살의 offset
-                    arrow = assignmentArrows[i]
-                    start_position = assignments[(random_number + offset) % 20].position
-                    assignmentArrows[i].run(start_position, my_character.center)
+                    arrow = gameArrows[i]
+                    start_position = games[(random_number + offset) % 20].position
+                    gameArrows[i].run(start_position, my_character.center)
                     i = (i + 1) % 25
                     arrows.append(arrow)
                 last_time3 = current_time
@@ -286,7 +286,7 @@ def main():
         
 
         current_time = time.time()  # 현재 시간
-        if current_time - portal_time >= 10 and portal.state != 'alive':  # 30초가 경과하면
+        if current_time - portal_time >= 30 and portal.state != 'alive':  # 30초가 경과하면
             random_number = random.randint(0, 3)
             if random_number == 0:
                 portal.run(20, 60)
@@ -318,14 +318,14 @@ def main():
             if finalExam.state == 'die' and pastExam.state == 'use':
                 pastExam.state = 'die'
 
-        for assignmentArrow in arrows:
-            if assignmentArrow.state == 'alive':
-                assignmentArrow.move()
-                assignmentArrow.collision_check(my_character)
-                if assignmentArrow.state == 'die' and pastExam.state == 'use':
+        for gameArrow in arrows:
+            if gameArrow.state == 'alive':
+                gameArrow.move()
+                gameArrow.collision_check(my_character)
+                if gameArrow.state == 'die' and pastExam.state == 'use':
                     pastExam.state = 'die'
 
-        arrows = [assignmentArrow for assignmentArrow in arrows if 0 <= assignmentArrow.position[0] <= 240 and 0 <= assignmentArrow.position[1] <= 240 and assignmentArrow.state == 'alive']
+        arrows = [gameArrow for gameArrow in arrows if 0 <= gameArrow.position[0] <= 240 and 0 <= gameArrow.position[1] <= 240 and gameArrow.state == 'alive']
 
 
         if greateNote.state == 'alive':
@@ -338,12 +338,12 @@ def main():
             if current_time - item1_active_time >= 5:
                 greateNote.state = 'die'
             else:
-                for assignmentArrow in arrows:
-                    assignmentArrow.item1 = True
+                for gameArrow in arrows:
+                    gameArrow.item1 = True
 
         if greateNote.state == 'die':
-            for assignmentArrow in arrows:
-                assignmentArrow.item1 = False
+            for gameArrow in arrows:
+                gameArrow.item1 = False
             item1_active_time = None
             greateNote.state = None
             
@@ -409,9 +409,9 @@ def main():
         if finalExam.state == 'alive':
             finalExam.draw(my_draw)
 
-        for assignmentArrow in arrows:
-            my_draw.ellipse((assignmentArrow.position[0] - 4, assignmentArrow.position[1] - 4, assignmentArrow.position[0] + 4, assignmentArrow.position[1] + 4), fill = (255, 0, 0))
-            # my_draw.ellipse((assignmentArrow.position[0] - 1, assignmentArrow.position[1] - 1, assignmentArrow.position[0] + 1, assignmentArrow.position[1] + 1), fill = (255, 255, 255))
+        for gameArrow in arrows:
+            my_draw.ellipse((gameArrow.position[0] - 4, gameArrow.position[1] - 4, gameArrow.position[0] + 4, gameArrow.position[1] + 4), fill = (255, 0, 0))
+            # my_draw.ellipse((gameArrow.position[0] - 1, gameArrow.position[1] - 1, gameArrow.position[0] + 1, gameArrow.position[1] + 1), fill = (255, 255, 255))
 
         if my_character.grade < 6:    
             score[my_character.grade].draw(my_draw)
@@ -454,8 +454,8 @@ def main():
                 greateNote.state = None
                 pastExam.state = None
                 portal.state = None
-                for assignmentArrow in arrows:
-                    assignmentArrow.state = None
+                for gameArrow in arrows:
+                    gameArrow.state = None
                 arrows = []
                 stage_flag = [False, False, False, False, False, False, False, False, False]
                 i = 0

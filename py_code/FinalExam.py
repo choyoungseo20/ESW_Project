@@ -81,9 +81,6 @@ class FinalExam:
             user.grade += 3
 
     def overlap(self, ego_position, other_position):
-        # if ego_position[0] + 36 < other_position[0] or ego_position[0] > other_position[0] or ego_position[1] + 36 < other_position[1] or ego_position[1] > other_position[1]:
-        #     return False  # 겹치지 않음
-        # return True  # 겹침
 
         if (ego_position[0] - other_position[0])**2 + (ego_position[1] - other_position[1])**2 >= (18)**2:
             return False  # 겹치지 않음
