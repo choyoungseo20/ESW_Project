@@ -218,7 +218,7 @@ def main():
             current_time = time.time()  # 현재 시간
             if current_time - last_time2 >= 2:  # 2초가 경과하면
                 random_number = random.randint(0, 19)
-                for j in range(3):  # 3번 반복
+                for j in range(2):  # 2번 반복
                     offset = 7 * j  # 각 화살의 offset
                     arrow = gameArrows[i]
                     start_position = games[(random_number + offset) % 20].position
@@ -227,7 +227,7 @@ def main():
                     arrows.append(arrow)
                 last_time2 = current_time
 
-        if my_character.term >= 7:
+        if my_character.term == 7:
             current_time = time.time()  # 현재 시간
             if current_time - last_time3 >= 5:  # 5초가 경과하면
                 random_number = random.randint(0, 19)
