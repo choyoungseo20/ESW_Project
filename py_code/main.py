@@ -71,13 +71,12 @@ def main():
         Dot2(195, 45), Dot2(200, 210), Dot2(201, 15), Dot2(227, 119)
         ]
     flowers = [
-        Flower(10, 100), Flower(30, 180), Flower(40, 40), Flower(40, 80),
-        Flower(70, 110), Flower(150, 30), Flower(160, 190), Flower(180, 160),
-        Flower(200, 70), Flower(210, 210), Flower(220, 140), Flower(220, 180)
+        Flower(10, 100), Flower(30, 180), Flower(40, 40), 
+        Flower(110, 90), Flower(150, 30), Flower(160, 190), 
+        Flower(200, 70), Flower(210, 210), Flower(220, 140)
         ]   
     grass = [
-        Grass(70, 30), Grass(110, 70), Grass(50, 180), Grass(100, 200),
-        Grass(150, 120), Grass(25, 120), Grass(190, 10)
+        Grass(25, 120), Grass(70, 30), Grass(100, 200), Grass(150, 120),Grass(190, 10)
         ]
     assignments = [
         Assignment(0, 0), Assignment(30, 0), Assignment(90, 0), Assignment(150, 0), Assignment(210, 0), 
@@ -132,6 +131,7 @@ def main():
     stage_flag = [False, False, False, False, False, False, False, False, False]
     i = 0
     clear = True
+    color = (155, 219, 71)
     while True:
         command = {'move': False, 'up_pressed': False , 'down_pressed': False, 'left_pressed': False, 'right_pressed': False}
         
@@ -150,13 +150,19 @@ def main():
         if not joystick.button_R.value:  # right pressed
             command['right_pressed'] = True
             command['move'] = True
+
+        if my_character.term % 2 == 0:
+            color = (255, 250, 250)
+        else:
+            color = (155, 219, 71)
+
         
         
         # 다음 단계 진입 시
         if stage_flag[my_character.term - 1] == False:
             if stage_flag[7] == True:
                 break
-            my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+            my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = color)
             for d1 in dots1:
                 d1.draw(my_draw)
             for d2 in dots2:
@@ -362,8 +368,7 @@ def main():
         if portal.state == 'alive':
             portal.collision_check(my_character)
 
-
-        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = color)
         for d1 in dots1:
             d1.draw(my_draw)
         for d2 in dots2:
@@ -404,8 +409,8 @@ def main():
             finalExam.draw(my_draw)
 
         for assignmentArrow in arrows:
-            my_draw.ellipse((assignmentArrow.position[0] - 3, assignmentArrow.position[1] - 3, assignmentArrow.position[0] + 3, assignmentArrow.position[1] + 3), fill = (255, 0, 0))
-            my_draw.ellipse((assignmentArrow.position[0] - 1, assignmentArrow.position[1] - 1, assignmentArrow.position[0] + 1, assignmentArrow.position[1] + 1), fill = (255, 255, 255))
+            my_draw.ellipse((assignmentArrow.position[0] - 4, assignmentArrow.position[1] - 4, assignmentArrow.position[0] + 4, assignmentArrow.position[1] + 4), fill = (255, 0, 0))
+            # my_draw.ellipse((assignmentArrow.position[0] - 1, assignmentArrow.position[1] - 1, assignmentArrow.position[0] + 1, assignmentArrow.position[1] + 1), fill = (255, 255, 255))
 
         if my_character.grade < 6:    
             score[my_character.grade].draw(my_draw)
@@ -416,7 +421,7 @@ def main():
             gameEnd2 = GameEnd2()
             ec2 = EndingCharacter2()
 
-            my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+            my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = color)
             for d1 in dots1:
                 d1.draw(my_draw)
             for d2 in dots2:
@@ -461,7 +466,7 @@ def main():
         ec1 = EndingCharacter1()
         gameScore = GameScore()
 
-        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (255, 250, 250))
         for d1 in dots1:
             d1.draw(my_draw)
         for d2 in dots2:
@@ -479,7 +484,7 @@ def main():
 
         time.sleep(1)
 
-        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (255, 250, 250))
         for d1 in dots1:
             d1.draw(my_draw)
         for d2 in dots2:
@@ -497,7 +502,7 @@ def main():
 
         time.sleep(1)
 
-        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (255, 250, 250))
         for d1 in dots1:
             d1.draw(my_draw)
         for d2 in dots2:
@@ -515,7 +520,7 @@ def main():
 
         time.sleep(1)
 
-        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (255, 250, 250))
         for d1 in dots1:
             d1.draw(my_draw)
         for d2 in dots2:
@@ -531,7 +536,7 @@ def main():
 
         time.sleep(1)
 
-        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (155, 219, 71))
+        my_draw.rectangle((0, 0, joystick.width, joystick.height), fill = (255, 250, 250))
         for d1 in dots1:
             d1.draw(my_draw)
         for d2 in dots2:
